@@ -19,6 +19,6 @@
     "gulp-util": "^3.0.6"
   },
   "scripts": {
-    "start": "index.html"
+    "start": "index.php"
   }
 }
