@@ -27,9 +27,11 @@
     position: absolute;
     top: 28px;
     right: 4px;
+    display: flex;
+    /*flex-direction: column;*/
 }
 .btn {
-    width: 300px;
+    width: 100px;
     height: 38px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
     background-color: #fff;
@@ -68,4 +70,15 @@ div#info {
     font-size: 17px;
     cursor: pointer;
 
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+#label {
+    position: absolute;
+    top: 0;
+    left: 37px;
+    background: rgba(255, 255, 255, 0.62);
 }

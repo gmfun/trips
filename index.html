@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Food Cart</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="style.css"/>
+    <!--<script src='http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false&language=en&v=3.17'></script>-->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/lodash/lodash.min.js"></script>
+    <script src="bower_components/angular-google-maps/dist/angular-google-maps.min.js"></script>
+    <script src="dist/all.js"></script>
+</head>
+<body ng-app="foodApp" ng-controller="mapCtrl">
+    <ui-gmap-google-map center='map.center' zoom='map.zoom' pan="true">
+        <ui-gmap-markers models="trips" coords="'pos'" events="events">
+
+        </ui-gmap-markers>
+
+    </ui-gmap-google-map>
+    <div id="goback">
+        <input type="text" ng-model="trip_id"/>
+        <button ng-click="getTrips()">Get Trip</button>
+
+    </div>
+    <div ng-show="selected.show" class="flex-column" id="label">
+        <p>Location accuracy: {{selected.location_accuracy}}</p>
+        <p>Speed: {{selected.speed}}</p>
+        <p>Bearing: {{selected.bearing}}</p>
+        <button class="" ng-click="selected.show=false">X</button>
+    </div>
+    <div>
+
+    </div>
+
+</body>
+</html>
