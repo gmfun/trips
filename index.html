@@ -20,11 +20,11 @@
         </ui-gmap-markers>
 
     </ui-gmap-google-map>
-    <div id="goback">
+    <form id="goback">
         <input type="text" ng-model="trip_id"/>
-        <button ng-click="getTrips()">Get Trip</button>
+        <button type="submit" ng-click="getTrips()">Get Trip</button>
 
-    </div>
+    </form>
     <div ng-show="selected.show" class="flex-column" id="label">
         <p>Location accuracy: {{selected.location_accuracy}}</p>
         <p>Speed: {{selected.speed}}</p>
