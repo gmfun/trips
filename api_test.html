@@ -181,13 +181,25 @@ function ping(array) {
     setTimeout(function() {
       obj.location.coordinates = [array[i].K, array[i].G];
       console.log(JSON.stringify(obj));
-      $.post("https://hypertrack-api-staging.herokuapp.com/api/v1/gps/", obj, function(data){
-//        console.log(JSON.stringify(obj));
-        origin.setPosition(array[i]);
-        origin.setTitle(i+"/"+array.length);
-        origin.setLabel(""+i+"/")
-//        console.log(markers, {lat: array[i].G, lng: array[i].K});
+      $.ajax({
+        type: "POST",
+        url: "https://hypertrack-api-staging.herokuapp.com/api/v1/gps/",
+        data: JSON.stringify(obj),
+        contentType:"application/json; charset=utf-8",
+        dataType: "json",
+        success: function(data) {
+          origin.setPosition(array[i]);
+          origin.setTitle(i+"/"+array.length);
+          origin.setLabel(""+i+"/")
+        }
       });
+//      $.post("https://hypertrack-api-staging.herokuapp.com/api/v1/gps/", obj, function(data){
+////        console.log(JSON.stringify(obj));
+//        origin.setPosition(array[i]);
+//        origin.setTitle(i+"/"+array.length);
+//        origin.setLabel(""+i+"/")
+////        console.log(markers, {lat: array[i].G, lng: array[i].K});
+//      });
       i++;
       if(array.length>i+1)
         run()
