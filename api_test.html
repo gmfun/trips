@@ -167,22 +167,25 @@ function ping(array) {
   var i = 0;
   var date = new Date;
   var obj = {
-    start_location: {
-      type: "Point",
-      coordinates: [array[0].K, array[0].G]
+    "location": {
+      "type": "Point",
+      "coordinates": []
     },
-    started_at: date,
-    courier_id: 2,
-    trip_id: trip.id
+    "trip_id": trip.id,
+    "location_accuracy": 5,
+    "speed": 4,
+    "bearing": 60
   };
-   run()
+   run();
   function run () {
     setTimeout(function() {
-      obj.location = [array[i].K, array[i].G];
-      console.log(obj);
+      obj.location.coordinates = [array[i].K, array[i].G];
+      console.log(JSON.stringify(obj));
       $.post("https://hypertrack-api-staging.herokuapp.com/api/v1/gps/", obj, function(data){
-        console.log(data);
-        origin.setPosition(array[i])
+//        console.log(JSON.stringify(obj));
+        origin.setPosition(array[i]);
+        origin.setTitle(i+"/"+array.length);
+        origin.setLabel(""+i+"/")
 //        console.log(markers, {lat: array[i].G, lng: array[i].K});
       });
       i++;
