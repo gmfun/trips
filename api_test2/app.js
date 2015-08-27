@@ -76,6 +76,7 @@ function initMap() {
             success: function(data) {
                 console.log(data);
                 trip = data;
+                $("#trip-id").html("Trip_id: "+ data.id);
                 calculateAndDisplayRoute(directionsService, directionsDisplay);
             }
         });
@@ -99,10 +100,12 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
         }
     });
 }
-
+var last =  null;
 
 function postGps(obj, current) {
-    console.log(current);
+    if(last)
+        console.log(google.maps.geometry.spherical.computeDistanceBetween(current, last));
+    last = current
     $.ajax({
         type: "POST",
         url: "https://hypertrack-api-staging.herokuapp.com/api/v1/gps/",
