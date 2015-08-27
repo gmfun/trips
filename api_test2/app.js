@@ -17,20 +17,27 @@ function initMap() {
     });
     // destination;
     google.maps.event.addListener(map, 'click', function(event) {
-        $("#info").hide();
-        $("#start").show()
-        origin = new google.maps.Marker({
-            position: event.latLng,
-            map: map
-        });
+        console.log(destination, order);
+        if(destination && order){
+            $("#info").hide();
+            $("#start").show()
 
-        destination.setMap(map)
+            origin = new google.maps.Marker({
+                position: event.latLng,
+                map: map
+            });
+
+            destination.setMap(map)
+        }
+        else{
+            alert("Select destination and courier")
+        }
         //console.log(get_destination);
         //destination =  new google.maps.Marker({
         //    position: get_destination,
         //    map: map
         //});
-        console.log(destination, origin);
+        //console.log(destination, origin);
         //var set = "origin";
         //if(set == "origin") {
         //    placeOrigin(event.latLng);
@@ -206,7 +213,7 @@ function ping(array) {
         if($("#speed").val()){
             to_move = $("#speed").val() * 0.277778 * 5;
         }else {
-            200;
+            to_move = 200;
         }
         //to_move = $("#speed").val() ? $("#speed").val() * 0.277778 * 5 || 200
     }
