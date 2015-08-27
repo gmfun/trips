@@ -1,27 +1,47 @@
 var origin;
 var destination;
+var get_destination;
 var trip;
 var markers = [];
 var points = [];
 var courier;
 var order;
+var map;
 function initMap() {
+    $("#start").hide()
     var directionsService = new google.maps.DirectionsService;
     var directionsDisplay = new google.maps.DirectionsRenderer;
-    var map = new google.maps.Map(document.getElementById('map'), {
+    map = new google.maps.Map(document.getElementById('map'), {
         zoom: 15,
         center: {lat: 19.1968401, lng: 72.8710581}
     });
     // destination;
     google.maps.event.addListener(map, 'click', function(event) {
-        var set = $("#panel").find('input[name=set]:checked').val()
-        if(set == "origin") {
-            placeOrigin(event.latLng);
-            $("#destination").prop('checked', true)
-        }
-        if(set == "destination") {
-            placeDestination(event.latLng);
-        }
+        $("#info").hide();
+        $("#start").show()
+        origin = new google.maps.Marker({
+            position: event.latLng,
+            map: map
+        });
+
+        destination.setMap(map)
+        //console.log(get_destination);
+        //destination =  new google.maps.Marker({
+        //    position: get_destination,
+        //    map: map
+        //});
+        console.log(destination, origin);
+        //var set = "origin";
+        //if(set == "origin") {
+        //    placeOrigin(event.latLng);
+        //    console.log(get_destination, event.latLng);
+        //
+        //    placeDestination(get_destination)
+        //    $("#destination").prop('checked', true)
+        //}
+        //if(set == "destination") {
+        //    placeDestination(event.latLng);
+        //}
 
     });
 
@@ -80,7 +100,8 @@ function initMap() {
             success: function(data) {
                 console.log(data);
                 trip = data;
-                $("#trip-id").html("Trip_id: "+ data.id);
+                $("#trip-id").html("Trip_id: "+ data.id );
+                $("#order-id").html("order_id: "+ order );
                 calculateAndDisplayRoute(directionsService, directionsDisplay);
             }
         });
@@ -136,13 +157,14 @@ function ping(array) {
     var obj = {
         "location": {
             "type": "Point",
-            "coordinates": []
+            "coordinates": [array[0].K, array[0].G]
         },
         "trip_id": trip.id,
         "location_accuracy": 5,
         "speed": 4,
         "bearing": 60
     };
+    postGps(obj, array[0])
     run();
     function run () {
         setTimeout( repeat2, 5000)
@@ -181,7 +203,12 @@ function ping(array) {
     }
 
     function resetToMove() {
-        to_move = 10;
+        if($("#speed").val()){
+            to_move = $("#speed").val() * 0.277778 * 5;
+        }else {
+            200;
+        }
+        //to_move = $("#speed").val() ? $("#speed").val() * 0.277778 * 5 || 200
     }
 
     function checkDistance() {

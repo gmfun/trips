@@ -11,7 +11,20 @@ angular.module("test", []).controller("controlCtrl", ["$http", "$scope", functio
     $scope.$watch('destination', function(current, old) {
         if(current){
             console.log(current);
-            $http.post("https://hypertrack-api-staging.herokuapp.com/api/v1/orders/", {destination_id: current}).success(function(data) {
+            get_destination = new google.maps.LatLng(current.location.coordinates[1], current.location.coordinates[0]);
+            if(destination){
+                destination.setPosition(get_destination)
+            }
+            else {
+                destination = new google.maps.Marker({
+                    position: get_destination,
+                    map: map
+                })
+                console.log(destination);
+            }
+
+            //get_destination = current
+            $http.post("https://hypertrack-api-staging.herokuapp.com/api/v1/orders/", {destination_id: current.id}).success(function(data) {
                 $scope.order = data;
                 console.log(data.id);
                 order = data.id
@@ -20,7 +33,7 @@ angular.module("test", []).controller("controlCtrl", ["$http", "$scope", functio
     });
     $scope.$watch('courier', function (current, old)  {
         if(current) {
-            courier = current
+            courier = current.id
         }
     })
 

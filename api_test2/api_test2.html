@@ -16,30 +16,40 @@
 <body ng-app="test">
 <div id="map"></div>
 <div id="control" ng-controller="controlCtrl">
-    <div class="flex-row spaced">
+    <div class="flex-column spaced">
         <div class="form-group">
             <label for="">Choose Destination
-                <select class="form-control" name="" ng-options="destination.id as destination.address for destination in destinations" id="" ng-model="destination">
+                <select class="form-control" name="" ng-options="destination as destination.address for destination in destinations" id="" ng-model="destination">
                     <option value=""></option>
                 </select>
             </label>
         </div>
         <div class="form-group">
              <label for="">Choose Courier
-                <select class="form-control" name="" id="" ng-options="courier.id as courier.name for courier in couriers" ng-model="courier">
+                <select class="form-control" name="" id="" ng-options="courier as courier.name for courier in couriers" ng-model="courier">
                     <option value=""></option>
                 </select>
         </label>
+        </div>
+        <div class="form-group">
+            <label for="">Speed (km/hr)
+                <input type="number" class="form-control" id="speed">
+            </label>
         </div>
         <!--<div class="form-group" ng-show="destination">-->
             <!--<button class="btn btn-default">Create order</button>-->
         <!--</div>-->
 
         <div id="panel" ng-show="courier && order">
-            <label for="origin"><input id="origin" type="radio" checked name="set" value="origin">Origin</label>
-            <label for="destination"><input id="destination" type="radio" name="set" value="destination">Destination</label>
+            <!--<label for="origin"><input id="origin" type="radio" checked name="set" value="origin">Origin</label>-->
+            <!--<label for="destination"><input id="destination" type="radio" name="set" value="destination">Destination</label>-->
+            <span id="info">Select Origin</span>
             <button id="start">Start trip</button>
-            <span id="trip-id"></span>
+            <div class="flex-column">
+                <span id="trip-id"></span>
+                <span id="order-id"></span>
+            </div>
+
         </div>
 
     </div>

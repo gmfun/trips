@@ -46,12 +46,16 @@ html, body {
     position: absolute;
     z-index: 2;
     top: 0;
-    width: 100%;
+            height: 100%;
     background-color: #fff;
 }
 .flex-row{
     display: flex;
     flex-direction: row;
+}
+.flex-column {
+    display: flex;
+    flex-direction: column;
 }
 .spaced {
         justify-content: space-around;
