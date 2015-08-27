@@ -3,8 +3,6 @@ var destination;
 var trip;
 var markers = [];
 var points = [];
-var courier;
-var order;
 function initMap() {
     var directionsService = new google.maps.DirectionsService;
     var directionsDisplay = new google.maps.DirectionsRenderer;
@@ -53,7 +51,6 @@ function initMap() {
 
     var onChangeHandler = function() {
         // console.log(origin.getPosition())
-        console.log(order);
         var latlong = origin.getPosition()
         var date = new Date;
         var obj = {
@@ -62,9 +59,8 @@ function initMap() {
                 "coordinates": [latlong.K, latlong.G]
             },
             "started_at": date.toISOString(),
-            "courier_id": courier,
-            "orders": [order]
-        };
+            "courier_id": 2
+        }
         postTrip(obj);
 
     };

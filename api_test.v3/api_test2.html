@@ -31,17 +31,16 @@
                 </select>
         </label>
         </div>
-        <!--<div class="form-group" ng-show="destination">-->
-            <!--<button class="btn btn-default">Create order</button>-->
-        <!--</div>-->
+        <div class="form-group" ng-show="destination">
+            <button class="btn btn-default">Create order</button>
+        </div>
 
-        <div id="panel" ng-show="courier && order">
+        <div id="panel" ng-show="courier">
             <label for="origin"><input id="origin" type="radio" checked name="set" value="origin">Origin</label>
             <label for="destination"><input id="destination" type="radio" name="set" value="destination">Destination</label>
             <button id="start">Start trip</button>
             <span id="trip-id"></span>
         </div>
-
     </div>
 </div>
 
