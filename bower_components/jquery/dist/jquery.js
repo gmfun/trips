@@ -106,18 +106,18 @@ jQuery.fn = jQuery.prototype = {
 	},
 
 	// Get the Nth element in the matched element set OR
-	// Get the whole matched element set as a clean array
+	// Get the whole matched element set as a clean data_array
 	get: function( num ) {
 		return num != null ?
 
 			// Return just the one element from the set
 			( num < 0 ? this[ num + this.length ] : this[ num ] ) :
 
-			// Return all the elements in a clean array
+			// Return all the elements in a clean data_array
 			slice.call( this );
 	},
 
-	// Take an array of elements and push it onto the stack
+	// Take an data_array of elements and push it onto the stack
 	// (returning the new matched element set)
 	pushStack: function( elems ) {
 
@@ -133,7 +133,7 @@ jQuery.fn = jQuery.prototype = {
 	},
 
 	// Execute a callback for every element in the matched set.
-	// (You can seed the arguments with an array of args, but this is
+	// (You can seed the arguments with an data_array of args, but this is
 	// only used internally.)
 	each: function( callback, args ) {
 		return jQuery.each( this, callback, args );
@@ -441,7 +441,7 @@ jQuery.extend({
 			length = elems.length,
 			callbackExpect = !invert;
 
-		// Go through the array, only saving the items
+		// Go through the data_array, only saving the items
 		// that pass the validator function
 		for ( ; i < length; i++ ) {
 			callbackInverse = !callback( elems[ i ], i );
@@ -461,7 +461,7 @@ jQuery.extend({
 			isArray = isArraylike( elems ),
 			ret = [];
 
-		// Go through the array, translating each of the items to their new values
+		// Go through the data_array, translating each of the items to their new values
 		if ( isArray ) {
 			for ( ; i < length; i++ ) {
 				value = callback( elems[ i ], i, arg );
@@ -547,7 +547,7 @@ function isArraylike( obj ) {
 		return true;
 	}
 
-	return type === "array" || length === 0 ||
+	return type === "data_array" || length === 0 ||
 		typeof length === "number" && length > 0 && ( length - 1 ) in obj;
 }
 var Sizzle =
@@ -1492,7 +1492,7 @@ Sizzle.uniqueSort = function( results ) {
 };
 
 /**
- * Utility function for retrieving the text value of an array of DOM nodes
+ * Utility function for retrieving the text value of an data_array of DOM nodes
  * @param {Array|Element} elem
  */
 getText = Sizzle.getText = function( elem ) {
@@ -1502,7 +1502,7 @@ getText = Sizzle.getText = function( elem ) {
 		nodeType = elem.nodeType;
 
 	if ( !nodeType ) {
-		// If no nodeType, this is expected to be an array
+		// If no nodeType, this is expected to be an data_array
 		while ( (node = elem[i++]) ) {
 			// Do not traverse comment nodes
 			ret += getText( node );
@@ -2380,7 +2380,7 @@ function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
 						matchedCount--;
 					}
 
-					// Lengthen the array for every element, matched or not
+					// Lengthen the data_array for every element, matched or not
 					if ( seed ) {
 						unmatched.push( elem );
 					}
@@ -2753,7 +2753,7 @@ var rootjQuery,
 			// Match html or make sure no context is specified for #id
 			if ( match && (match[1] || !context) ) {
 
-				// HANDLE: $(html) -> $(array)
+				// HANDLE: $(html) -> $(data_array)
 				if ( match[1] ) {
 					context = context instanceof jQuery ? context[0] : context;
 
@@ -3664,14 +3664,14 @@ Data.prototype = {
 			this.cache[ unlock ] = {};
 
 		} else {
-			// Support array or space separated string of keys
+			// Support data_array or space separated string of keys
 			if ( jQuery.isArray( key ) ) {
-				// If "name" is an array of keys...
+				// If "name" is an data_array of keys...
 				// When data is initially created, via ("key", "val") signature,
 				// keys will be converted to camelCase.
 				// Since there is no way to tell _how_ a key was added, remove
 				// both plain key and camelCase key. #12786
-				// This will only penalize the array argument path.
+				// This will only penalize the data_array argument path.
 				name = key.concat( key.map( jQuery.camelCase ) );
 			} else {
 				camel = jQuery.camelCase( key );
@@ -3680,7 +3680,7 @@ Data.prototype = {
 					name = [ key, camel ];
 				} else {
 					// If a key with the spaces exists, use it.
-					// Otherwise, create an array by matching non-whitespace
+					// Otherwise, create an data_array by matching non-whitespace
 					name = camel;
 					name = name in cache ?
 						[ name ] : ( name.match( rnotwhite ) || [] );
@@ -7418,12 +7418,12 @@ jQuery.extend({
 						// Get the specific value for the option
 						value = jQuery( option ).val();
 
-						// We don't need an array for one selects
+						// We don't need an data_array for one selects
 						if ( one ) {
 							return value;
 						}
 
-						// Multi-Selects return an array
+						// Multi-Selects return an data_array
 						values.push( value );
 					}
 				}
@@ -8424,14 +8424,14 @@ function buildParams( prefix, obj, traditional, add ) {
 	var name;
 
 	if ( jQuery.isArray( obj ) ) {
-		// Serialize array item.
+		// Serialize data_array item.
 		jQuery.each( obj, function( i, v ) {
 			if ( traditional || rbracket.test( prefix ) ) {
-				// Treat each array item as a scalar.
+				// Treat each data_array item as a scalar.
 				add( prefix, v );
 
 			} else {
-				// Item is non-scalar (array or object), encode its numeric index.
+				// Item is non-scalar (data_array or object), encode its numeric index.
 				buildParams( prefix + "[" + ( typeof v === "object" ? i : "" ) + "]", v, traditional, add );
 			}
 		});
@@ -8448,7 +8448,7 @@ function buildParams( prefix, obj, traditional, add ) {
 	}
 }
 
-// Serialize an array of form elements or a set of
+// Serialize an data_array of form elements or a set of
 // key/values into a query string
 jQuery.param = function( a, traditional ) {
 	var prefix,
@@ -8464,7 +8464,7 @@ jQuery.param = function( a, traditional ) {
 		traditional = jQuery.ajaxSettings && jQuery.ajaxSettings.traditional;
 	}
 
-	// If an array was passed in, assume that it is an array of form elements.
+	// If an data_array was passed in, assume that it is an data_array of form elements.
 	if ( jQuery.isArray( a ) || ( a.jquery && !jQuery.isPlainObject( a ) ) ) {
 		// Serialize the form elements
 		jQuery.each( a, function() {

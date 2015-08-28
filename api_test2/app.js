@@ -1,12 +1,18 @@
 var origin;
 var destination;
 var get_destination;
+var recieve_destination;
 var trip;
 var markers = [];
 var points = [];
 var courier;
 var order;
 var map;
+var destination_changed = false;
+var trip_started = false;
+var move;
+//var directionsService = new google.maps.DirectionsService;
+//var directionsDisplay = new google.maps.DirectionsRenderer;
 function initMap() {
     $("#start").hide()
     var directionsService = new google.maps.DirectionsService;
@@ -19,15 +25,36 @@ function initMap() {
     google.maps.event.addListener(map, 'click', function(event) {
         console.log(destination, order);
         if(destination && order){
-            $("#info").hide();
-            $("#start").show()
+            if(trip_started){
+                var conf = confirm("Do you want to change the destination")
+                if(conf){
+                    destination.setPosition(event.latLng);
+                    destination.setMap(map);
+                    console.log(destination);
+                    destination_changed = true;
+                    //console.log("change destination of id " + recieve_destination.id);
+                    patchDestination(recieve_destination.id, event.latLng);
+                    //$("#start").click();
+                    clearTimeout(move);
+                    calculateAndDisplayRoute(directionsService, directionsDisplay);
+                }
+            }
+            else {
+                $("#info").hide();
+                $("#start").show();
+                if(origin || trip_started) {
 
-            origin = new google.maps.Marker({
-                position: event.latLng,
-                map: map
-            });
+                }else {
+                    origin = new google.maps.Marker({
+                        position: event.latLng,
+                        map: map
+                    });
+                }
 
-            destination.setMap(map)
+
+                destination.setMap(map)
+            }
+
         }
         else{
             alert("Select destination and courier")
@@ -80,8 +107,9 @@ function initMap() {
 
     var onChangeHandler = function() {
         // console.log(origin.getPosition())
+        trip_started = true;
         console.log(order);
-        var latlong = origin.getPosition()
+        var latlong = origin.getPosition();
         var date = new Date;
         var obj = {
             "start_location": {
@@ -116,6 +144,8 @@ function initMap() {
 }
 
 function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+    //destination.setPosition(get_destination)
+    //console.log(destination.getPosition(), "destin");
     directionsService.route({
         origin: origin.getPosition(),//document.getElementById('start').value,
         destination: destination.getPosition(), //document.getElementById('end').value,
@@ -135,6 +165,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
 var last =  null;
 
 function postGps(obj, current) {
+    console.log(destination_changed, "dest_change");
     if(last)
         console.log(google.maps.geometry.spherical.computeDistanceBetween(current, last));
     last = current
@@ -146,10 +177,19 @@ function postGps(obj, current) {
         dataType: "json",
         success: function(data) {
             origin.setPosition(current);
-            //origin.setTitle(i+"/"+array.length);
+            //origin.setTitle(i+"/"+data_array.length);
             //origin.setLabel(""+i+"/")
         }
+
     });
+    //if(destination_changed) {
+    //    var directionsService = new google.maps.DirectionsService;
+    //    var directionsDisplay = new google.maps.DirectionsRenderer;
+    //    calculateAndDisplayRoute(directionsService, directionsDisplay);
+    //    destination_changed = false;
+    //}
+    //else {
+    //}
 }
 function ping(array) {
     var to_move;
@@ -171,10 +211,31 @@ function ping(array) {
         "speed": 4,
         "bearing": 60
     };
-    postGps(obj, array[0])
+    if(destination_changed){
+        postGps(obj, array[0]);
+        destination_changed = false;
+    }
+
     run();
     function run () {
-        setTimeout( repeat2, 5000)
+        //console.log(destination_changed, "change");
+        //if(destination_changed) {
+        //    var directionsService = new google.maps.DirectionsService;
+        //    var directionsDisplay = new google.maps.DirectionsRenderer;
+        //    destination.setPosition(get_destination);
+        //    destination.setMap(map);
+        //    console.log(destination);
+        //    destination_changed = false;
+        //    $("#start").click();
+        //    //calculateAndDisplayRoute(directionsService, directionsDisplay);
+        //    //destination_changed = false;
+        //    //resetToMove();
+        //    //current_i = 0
+        //}
+        //else {
+        //    move = setTimeout( repeat2, 5000)
+        //}
+        move = setTimeout( repeat2, 5000)
     }
 
     function repeat() {
@@ -219,8 +280,36 @@ function ping(array) {
     }
 
     function checkDistance() {
-        next_i = google.maps.geometry.spherical.computeDistanceBetween(current_location, array[current_i+1]); // distance between current_location, array(current_i+1)
+        next_i = google.maps.geometry.spherical.computeDistanceBetween(current_location, array[current_i+1]); // distance between current_location, data_array(current_i+1)
         console.log(to_move <= next_i);
         return to_move <= next_i
     }
+}
+
+function patchDestination(id, latlng) {
+    console.log(id, latlng);
+    var obj = {
+        "location": {
+            "type": "Point",
+            "coordinates": [latlng.K, latlng.G]
+        }
+    }
+    $.ajax({
+        type: "PATCH",
+        url: "https://hypertrack-api-staging.herokuapp.com/api/v1/destinations/" + id + "/",
+        data: JSON.stringify(obj),
+        xhr: function() {
+            return window.XMLHttpRequest == null || new window.XMLHttpRequest().addEventListener == null
+                ? new window.ActiveXObject("Microsoft.XMLHTTP")
+                : $.ajaxSettings.xhr();
+        },
+        contentType:"application/json; charset=utf-8",
+        dataType: "json",
+        success: function(data) {
+            //origin.setPosition(current);
+            ////origin.setTitle(i+"/"+data_array.length);
+            ////origin.setLabel(""+i+"/")
+        }
+
+    });
 }

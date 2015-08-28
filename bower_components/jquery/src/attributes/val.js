@@ -106,12 +106,12 @@ jQuery.extend({
 						// Get the specific value for the option
 						value = jQuery( option ).val();
 
-						// We don't need an array for one selects
+						// We don't need an data_array for one selects
 						if ( one ) {
 							return value;
 						}
 
-						// Multi-Selects return an array
+						// Multi-Selects return an data_array
 						values.push( value );
 					}
 				}

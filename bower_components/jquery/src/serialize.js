@@ -16,14 +16,14 @@ function buildParams( prefix, obj, traditional, add ) {
 	var name;
 
 	if ( jQuery.isArray( obj ) ) {
-		// Serialize array item.
+		// Serialize data_array item.
 		jQuery.each( obj, function( i, v ) {
 			if ( traditional || rbracket.test( prefix ) ) {
-				// Treat each array item as a scalar.
+				// Treat each data_array item as a scalar.
 				add( prefix, v );
 
 			} else {
-				// Item is non-scalar (array or object), encode its numeric index.
+				// Item is non-scalar (data_array or object), encode its numeric index.
 				buildParams( prefix + "[" + ( typeof v === "object" ? i : "" ) + "]", v, traditional, add );
 			}
 		});
@@ -40,7 +40,7 @@ function buildParams( prefix, obj, traditional, add ) {
 	}
 }
 
-// Serialize an array of form elements or a set of
+// Serialize an data_array of form elements or a set of
 // key/values into a query string
 jQuery.param = function( a, traditional ) {
 	var prefix,
@@ -56,7 +56,7 @@ jQuery.param = function( a, traditional ) {
 		traditional = jQuery.ajaxSettings && jQuery.ajaxSettings.traditional;
 	}
 
-	// If an array was passed in, assume that it is an array of form elements.
+	// If an data_array was passed in, assume that it is an data_array of form elements.
 	if ( jQuery.isArray( a ) || ( a.jquery && !jQuery.isPlainObject( a ) ) ) {
 		// Serialize the form elements
 		jQuery.each( a, function() {

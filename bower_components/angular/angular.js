@@ -263,7 +263,7 @@ msie = document.documentMode;
 /**
  * @private
  * @param {*} obj
- * @return {boolean} Returns true if `obj` is an array or array-like object (NodeList, Arguments,
+ * @return {boolean} Returns true if `obj` is an data_array or data_array-like object (NodeList, Arguments,
  *                   String ...)
  */
 function isArrayLike(obj) {
@@ -291,9 +291,9 @@ function isArrayLike(obj) {
  *
  * @description
  * Invokes the `iterator` function once for each item in `obj` collection, which can be either an
- * object or an array. The `iterator` function is invoked with `iterator(value, key, obj)`, where `value`
- * is the value of an object property or an array element, `key` is the object property key or
- * array element index and obj is the `obj` itself. Specifying a `context` for the function is optional.
+ * object or an data_array. The `iterator` function is invoked with `iterator(value, key, obj)`, where `value`
+ * is the value of an object property or an data_array element, `key` is the object property key or
+ * data_array element index and obj is the `obj` itself. Specifying a `context` for the function is optional.
  *
  * It is worth noting that `.forEach` does not iterate over inherited properties because it filters
  * using the `hasOwnProperty` method.
@@ -810,12 +810,12 @@ function arrayRemove(array, value) {
  * @kind function
  *
  * @description
- * Creates a deep copy of `source`, which should be an object or an array.
+ * Creates a deep copy of `source`, which should be an object or an data_array.
  *
- * * If no destination is supplied, a copy of the object or array is created.
+ * * If no destination is supplied, a copy of the object or data_array is created.
  * * If a destination is provided, all of its elements (for arrays) or properties (for objects)
  *   are deleted and then all elements/properties from the source are copied to it.
- * * If `source` is not an object or array (inc. `null` and `undefined`), `source` is returned.
+ * * If `source` is not an object or data_array (inc. `null` and `undefined`), `source` is returned.
  * * If `source` is identical to 'destination' an exception will be thrown.
  *
  * @param {*} source The source that will be used to make a copy.
@@ -882,7 +882,7 @@ function copy(source, destination, stackSource, stackDest) {
       // TypedArray, Date and RegExp have specific copy functionality and must be
       // pushed onto the stack before returning.
       // Array and other objects create the base object and recurse to copy child
-      // objects. The array/object will be pushed onto the stack when recursed.
+      // objects. The data_array/object will be pushed onto the stack when recursed.
       if (isArray(source)) {
         return copy(source, [], stackSource, stackDest);
       } else if (isTypedArray(source)) {
@@ -956,7 +956,7 @@ function copy(source, destination, stackSource, stackDest) {
 }
 
 /**
- * Creates a shallow copy of an object, an array or a primitive.
+ * Creates a shallow copy of an object, an data_array or a primitive.
  *
  * Assumes that there are no proto properties for objects.
  */
@@ -1484,7 +1484,7 @@ function getNgAttribute(element, ngAttr) {
        $scope.b = 2;
      })
      // Unlike BadController, GoodController1 and GoodController2 will not fail to be instantiated,
-     // due to using explicit annotations using the array style and $inject property, respectively.
+     // due to using explicit annotations using the data_array style and $inject property, respectively.
      .controller('GoodController1', ['$scope', function($scope) {
        $scope.a = 1;
        $scope.b = 2;
@@ -1584,8 +1584,8 @@ function angularInit(element, bootstrap) {
  * ```
  *
  * @param {DOMElement} element DOM element which is the root of angular application.
- * @param {Array<String|Function|Array>=} modules an array of modules to load into the application.
- *     Each item in the array should be the name of a predefined module or a (DI annotated)
+ * @param {Array<String|Function|Array>=} modules an data_array of modules to load into the application.
+ *     Each item in the data_array should be the name of a predefined module or a (DI annotated)
  *     function that will be invoked by the injector as a `config` block.
  *     See: {@link angular.module modules}
  * @param {Object=} config an object for defining configuration options for the application. The
@@ -1821,8 +1821,8 @@ function getter(obj, path, bindFnToScope) {
 }
 
 /**
- * Return the DOM siblings between the first and last node in the given array.
- * @param {Array} array like object
+ * Return the DOM siblings between the first and last node in the given data_array.
+ * @param {Array} data_array like object
  * @returns {jqLite} jqLite collection containing the nodes
  */
 function getBlockNodes(nodes) {
@@ -3261,7 +3261,7 @@ function createEventHandler(element, events) {
       return event.immediatePropagationStopped === true;
     };
 
-    // Copy event handlers in case event handlers array is modified during execution.
+    // Copy event handlers in case event handlers data_array is modified during execution.
     if ((eventFnsLength > 1)) {
       eventFns = shallowCopy(eventFns);
     }
@@ -3487,7 +3487,7 @@ forEach({
         dummyEvent = extend(dummyEvent, event);
       }
 
-      // Copy event handlers in case event handlers array is modified during execution.
+      // Copy event handlers in case event handlers data_array is modified during execution.
       eventFnsCopy = shallowCopy(eventFns);
       handlerArgs = extraParameters ? [dummyEvent].concat(extraParameters) : [dummyEvent];
 
@@ -3792,7 +3792,7 @@ function annotate(fn, strictDi, name) {
  * By adding an `$inject` property onto a function the injection parameters can be specified.
  *
  * ## Inline
- * As an array of injection names, where the last item in the array is the function to call.
+ * As an data_array of injection names, where the last item in the data_array is the function to call.
  */
 
 /**
@@ -3852,7 +3852,7 @@ function annotate(fn, strictDi, name) {
  * @name $injector#annotate
  *
  * @description
- * Returns an array of service names which the function is requesting for injection. This API is
+ * Returns an data_array of service names which the function is requesting for injection. This API is
  * used by the injector to determine which services need to be injected into the function when the
  * function is invoked. There are three ways in which the function can be annotated with the needed
  * dependencies.
@@ -3879,7 +3879,7 @@ function annotate(fn, strictDi, name) {
  *
  * # The `$inject` property
  *
- * If a function has an `$inject` property and its value is an array of strings, then the strings
+ * If a function has an `$inject` property and its value is an data_array of strings, then the strings
  * represent names of services to be injected into the function.
  * ```js
  *   // Given
@@ -3893,10 +3893,10 @@ function annotate(fn, strictDi, name) {
  *   expect(injector.annotate(MyController)).toEqual(['$scope', '$route']);
  * ```
  *
- * # The array notation
+ * # The data_array notation
  *
  * It is often desirable to inline Injected functions and that's when setting the `$inject` property
- * is very inconvenient. In these situations using the array notation to specify the dependencies in
+ * is very inconvenient. In these situations using the data_array notation to specify the dependencies in
  * a way that survives minification is a better choice:
  *
  * ```js
@@ -4152,7 +4152,7 @@ function annotate(fn, strictDi, name) {
  * @description
  *
  * Register a **value service** with the {@link auto.$injector $injector}, such as a string, a
- * number, an array, an object or a function.  This is short for registering a service where its
+ * number, an data_array, an object or a function.  This is short for registering a service where its
  * provider's `$get` property is a factory function that takes no arguments and returns the **value
  * service**.
  *
@@ -4184,7 +4184,7 @@ function annotate(fn, strictDi, name) {
  * @name $provide#constant
  * @description
  *
- * Register a **constant service**, such as a string, a number, an array, an object or a function,
+ * Register a **constant service**, such as a string, a number, an data_array, an object or a function,
  * with the {@link auto.$injector $injector}. Unlike {@link auto.$provide#value value} it can be
  * injected into a module configuration function (see {@link angular.Module#config}) and it cannot
  * be overridden by an Angular {@link auto.$provide#decorator decorator}.
@@ -5654,7 +5654,7 @@ function Browser(window, document, $log, $sniffer) {
    * Executes a fn asynchronously via `setTimeout(fn, delay)`.
    *
    * Unlike when calling `setTimeout` directly, in test this function is mocked and instead of using
-   * `setTimeout` in tests, the fns are queued in an array, which can be programmatically flushed
+   * `setTimeout` in tests, the fns are queued in an data_array, which can be programmatically flushed
    * via `$browser.defer.flush()`.
    *
    */
@@ -6320,8 +6320,8 @@ function $TemplateCacheProvider() {
  *
  * #### `require`
  * Require another directive and inject its controller as the fourth argument to the linking function. The
- * `require` takes a string name (or array of strings) of the directive(s) to pass in. If an array is used, the
- * injected argument will be an array in corresponding order. If no such directive can be
+ * `require` takes a string name (or data_array of strings) of the directive(s) to pass in. If an data_array is used, the
+ * injected argument will be an data_array in corresponding order. If no such directive can be
  * found, or if the directive does not have a controller, then an error is raised (unless no link function
  * is specified, in which case error checking is skipped). The name can be prefixed with:
  *
@@ -6500,7 +6500,7 @@ function $TemplateCacheProvider() {
  *     channel. The exact value depends on the directive's `require` property:
  *       * no controller(s) required: the directive's own controller, or `undefined` if it doesn't have one
  *       * `string`: the controller instance
- *       * `array`: array of controller instances
+ *       * `data_array`: data_array of controller instances
  *
  *     If a required controller cannot be found, and it is optional, the instance is `null`,
  *     otherwise the {@link error:$compile:ctreq Missing Required Controller} error is thrown.
@@ -7045,7 +7045,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
    * binding information and a reference to the current scope on to DOM elements.
    * If enabled, the compiler will add the following to DOM elements that have been bound to the scope
    * * `ng-binding` CSS class
-   * * `$binding` data property containing an array of the binding expressions
+   * * `$binding` data property containing an data_array of the binding expressions
    *
    * You may want to disable this in production for a significant performance boost. See
    * {@link guide/production#disabling-debug-data Disabling Debug Data} for more.
@@ -7434,7 +7434,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
      * functions return values - the linking functions - are combined into a composite linking
      * function, which is the a linking function for the node.
      *
-     * @param {NodeList} nodeList an array of nodes or NodeList to compile
+     * @param {NodeList} nodeList an data_array of nodes or NodeList to compile
      * @param {function(angular.Scope, cloneAttachFn=)} transcludeFn A linking function, where the
      *        scope argument is auto-generated to the new child of the transcluded parent scope.
      * @param {DOMElement=} $rootElement If the nodeList is the root of the compilation tree then
@@ -7497,7 +7497,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
           var nodeListLength = nodeList.length;
           stableNodeList = new Array(nodeListLength);
 
-          // create a sparse array by only copying the elements which have a linkFn
+          // create a sparse data_array by only copying the elements which have a linkFn
           for (i = 0; i < linkFns.length; i+=3) {
             idx = linkFns[i];
             stableNodeList[idx] = nodeList[idx];
@@ -7572,7 +7572,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
      * sorted.
      *
      * @param node Node to search.
-     * @param directives An array to which the directives are added to. This array is sorted before
+     * @param directives An data_array to which the directives are added to. This data_array is sorted before
      *        the function returns.
      * @param attrs The shared attrs object which is used to populate the normalized attributes.
      * @param {number=} maxPriority Max directive priority.
@@ -7737,7 +7737,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
      *                                                  scope argument is auto-generated to the new
      *                                                  child of the transcluded parent scope.
      * @param {JQLite} jqCollection If we are working on the root of the compile tree then this
-     *                              argument has the root jqLite array so that we can replace nodes
+     *                              argument has the root jqLite data_array so that we can replace nodes
      *                              on it.
      * @param {Object=} originalReplaceDirective An optional directive that will be ignored when
      *                                           compiling the transclusion.
@@ -7888,7 +7888,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
             var newTemplateAttrs = {$attr: {}};
 
             // combine directives from the original node and from the template:
-            // - take the array of directives for this element
+            // - take the data_array of directives for this element
             // - split it into two parts, those that already applied (processed) and those that weren't (unprocessed)
             // - collect directives from the template and sort them by priority
             // - combine directives as: processed + template + unprocessed
@@ -8894,7 +8894,7 @@ function $ControllerProvider() {
    * @param {string|Object} name Controller name, or an object map of controllers where the keys are
    *    the names and the values are the constructors.
    * @param {Function|Array} constructor Controller constructor fn (optionally decorated with DI
-   *    annotations in the array notation).
+   *    annotations in the data_array notation).
    */
   this.register = function(name, constructor) {
     assertNotHasOwnProperty(name, 'controller');
@@ -9139,7 +9139,7 @@ function $HttpParamSerializerProvider() {
    *
    * * `{'foo': 'bar'}` results in `foo=bar`
    * * `{'foo': Date.now()}` results in `foo=2015-04-01T09%3A50%3A49.262Z` (`toISOString()` and encoded representation of a Date object)
-   * * `{'foo': ['bar', 'baz']}` results in `foo=bar&foo=baz` (repeated key for each array element)
+   * * `{'foo': ['bar', 'baz']}` results in `foo=bar&foo=baz` (repeated key for each data_array element)
    * * `{'foo': {'bar':'baz'}}` results in `foo=%7B%22bar%22%3A%22baz%22%7D"` (stringified and encoded representation of an object)
    *
    * Note that serializer will sort the request parameters alphabetically.
@@ -9327,7 +9327,7 @@ function headersGetter(headers) {
  * @param {*} data Data to transform.
  * @param {function(string=)} headers HTTP headers getter fn.
  * @param {number} status HTTP status code of the response.
- * @param {(Function|Array.<Function>)} fns Function or an array of functions.
+ * @param {(Function|Array.<Function>)} fns Function or an data_array of functions.
  * @returns {*} Transformed data.
  */
 function transformData(data, headers, status, fns) {
@@ -9450,7 +9450,7 @@ function $HttpProvider() {
    * pre-processing of request or postprocessing of responses.
    *
    * These service factories are ordered by request, i.e. they are applied in the same order as the
-   * array, on request, but reverse order, on response.
+   * data_array, on request, but reverse order, on response.
    *
    * {@link ng.$http#interceptors Interceptors detailed info}
    **/
@@ -9629,7 +9629,7 @@ function $HttpProvider() {
      *
      * Both requests and responses can be transformed using transformation functions: `transformRequest`
      * and `transformResponse`. These properties can be a single function that returns
-     * the transformed value (`function(data, headersGetter, status)`) or an array of such transformation functions,
+     * the transformed value (`function(data, headersGetter, status)`) or an data_array of such transformation functions,
      * which allows you to `push` or `unshift` a new transformation function into the transformation chain.
      *
      * ### Default Transformations
@@ -9639,7 +9639,7 @@ function $HttpProvider() {
      * then these will be applied.
      *
      * You can augment or replace the default transformations by modifying these properties by adding to or
-     * replacing the array.
+     * replacing the data_array.
      *
      * Angular provides the following default transformations:
      *
@@ -9662,7 +9662,7 @@ function $HttpProvider() {
      *
      * Note that if you provide these properties on the config object the default transformations will be
      * overwritten. If you wish to augment the default transformations then you must include them in your
-     * local transformation array.
+     * local transformation data_array.
      *
      * The following code demonstrates adding a new response transformation to be run after the default response
      * transformations have been run.
@@ -9670,7 +9670,7 @@ function $HttpProvider() {
      * ```js
      * function appendTransform(defaults, transform) {
      *
-     *   // We can't guarantee that the default transformation is an array
+     *   // We can't guarantee that the default transformation is an data_array
      *   defaults = angular.isArray(defaults) ? defaults : [defaults];
      *
      *   // Append the new transformation to the defaults
@@ -9723,7 +9723,7 @@ function $HttpProvider() {
      * promise APIs} to fulfill this need for both synchronous and asynchronous pre-processing.
      *
      * The interceptors are service factories that are registered with the `$httpProvider` by
-     * adding them to the `$httpProvider.interceptors` array. The factory is called and
+     * adding them to the `$httpProvider.interceptors` data_array. The factory is called and
      * injected with dependencies (if specified) and returns the interceptor.
      *
      * There are two kinds of interceptors (and two kinds of rejection interceptors):
@@ -9870,13 +9870,13 @@ function $HttpProvider() {
      *    - **xsrfCookieName** – `{string}` – Name of cookie containing the XSRF token.
      *    - **transformRequest** –
      *      `{function(data, headersGetter)|Array.<function(data, headersGetter)>}` –
-     *      transform function or an array of such functions. The transform function takes the http
+     *      transform function or an data_array of such functions. The transform function takes the http
      *      request body and headers and returns its transformed (typically serialized) version.
      *      See {@link ng.$http#overriding-the-default-transformations-per-request
      *      Overriding the Default Transformations}
      *    - **transformResponse** –
      *      `{function(data, headersGetter, status)|Array.<function(data, headersGetter, status)>}` –
-     *      transform function or an array of such functions. The transform function takes the http
+     *      transform function or an data_array of such functions. The transform function takes the http
      *      response body, headers and status and returns its transformed (typically deserialized) version.
      *      See {@link ng.$http#overriding-the-default-transformations-per-request
      *      Overriding the Default TransformationjqLiks}
@@ -10814,7 +10814,7 @@ function $InterpolateProvider() {
           expressionPositions.push(concat.length);
           concat.push('');
         } else {
-          // we did not find an interpolation, so we have to add the remainder to the separators array
+          // we did not find an interpolation, so we have to add the remainder to the separators data_array
           if (index !== textLength) {
             concat.push(unescapeText(text.substring(index)));
           }
@@ -11713,13 +11713,13 @@ var locationPrototype = {
    * When called with a single argument the method acts as a setter, setting the `search` component
    * of `$location` to the specified value.
    *
-   * If the argument is a hash object containing an array of values, these values will be encoded
+   * If the argument is a hash object containing an data_array of values, these values will be encoded
    * as duplicate search parameters in the url.
    *
    * @param {(string|Number|Array<string>|boolean)=} paramValue If `search` is a string or number, then `paramValue`
    * will override only a single search property.
    *
-   * If `paramValue` is an array, it will override the property of the `search` component of
+   * If `paramValue` is an data_array, it will override the property of the `search` component of
    * `$location` specified via the first argument.
    *
    * If `paramValue` is `null`, the property specified via the first argument will be deleted.
@@ -14769,9 +14769,9 @@ function qFactory(nextTick, exceptionHandler) {
    * Combines multiple promises into a single promise that is resolved when all of the input
    * promises are resolved.
    *
-   * @param {Array.<Promise>|Object.<Promise>} promises An array or hash of promises.
-   * @returns {Promise} Returns a single promise that will be resolved with an array/hash of values,
-   *   each value corresponding to the promise at the same index/key in the `promises` array/hash.
+   * @param {Array.<Promise>|Object.<Promise>} promises An data_array or hash of promises.
+   * @returns {Promise} Returns a single promise that will be resolved with an data_array/hash of values,
+   *   each value corresponding to the promise at the same index/key in the `promises` data_array/hash.
    *   If any of the promises is resolved with a rejection, this resulting promise will be rejected
    *   with the same rejection value.
    */
@@ -14917,10 +14917,10 @@ function $$RAFProvider() { //rAF
  *
  * Loop operations are optimized by using while(count--) { ... }
  *   - this means that in order to keep the same order of execution as addition we have to add
- *     items to the array at the beginning (unshift) instead of at the end (push)
+ *     items to the data_array at the beginning (unshift) instead of at the end (push)
  *
  * Child scopes are created and removed often
- *   - Using an array would be slow since inserts in middle are expensive so we use linked list
+ *   - Using an data_array would be slow since inserts in middle are expensive so we use linked list
  *
  * There are few watches then a lot of observers. This is why you don't want the observer to be
  * implemented in the same way as watch. Watch requires return of initialization function which
@@ -15309,21 +15309,21 @@ function $RootScopeProvider() {
        * @kind function
        *
        * @description
-       * A variant of {@link ng.$rootScope.Scope#$watch $watch()} where it watches an array of `watchExpressions`.
+       * A variant of {@link ng.$rootScope.Scope#$watch $watch()} where it watches an data_array of `watchExpressions`.
        * If any one expression in the collection changes the `listener` is executed.
        *
-       * - The items in the `watchExpressions` array are observed via standard $watch operation and are examined on every
+       * - The items in the `watchExpressions` data_array are observed via standard $watch operation and are examined on every
        *   call to $digest() to see if any items changes.
-       * - The `listener` is called whenever any expression in the `watchExpressions` array changes.
+       * - The `listener` is called whenever any expression in the `watchExpressions` data_array changes.
        *
        * @param {Array.<string|Function(scope)>} watchExpressions Array of expressions that will be individually
        * watched using {@link ng.$rootScope.Scope#$watch $watch()}
        *
        * @param {function(newValues, oldValues, scope)} listener Callback called whenever the return value of any
        *    expression in `watchExpressions` changes
-       *    The `newValues` array contains the current values of the `watchExpressions`, with the indexes matching
+       *    The `newValues` data_array contains the current values of the `watchExpressions`, with the indexes matching
        *    those of `watchExpression`
-       *    and the `oldValues` array contains the previous values of the `watchExpressions`, with the indexes matching
+       *    and the `oldValues` data_array contains the previous values of the `watchExpressions`, with the indexes matching
        *    those of `watchExpression`
        *    The `scope` refers to the current scope.
        * @returns {function()} Returns a de-registration function for all listeners.
@@ -15394,13 +15394,13 @@ function $RootScopeProvider() {
        *
        * @description
        * Shallow watches the properties of an object and fires whenever any of the properties change
-       * (for arrays, this implies watching the array items; for object maps, this implies watching
+       * (for arrays, this implies watching the data_array items; for object maps, this implies watching
        * the properties). If a change is detected, the `listener` callback is fired.
        *
        * - The `obj` collection is observed via standard $watch operation and is examined on every
        *   call to $digest() to see if any items have been added, removed, or moved.
        * - The `listener` is called whenever anything within the `obj` has changed. Examples include
-       *   adding, removing, and moving items belonging to an object or array.
+       *   adding, removing, and moving items belonging to an object or data_array.
        *
        *
        * # Example
@@ -15427,7 +15427,7 @@ function $RootScopeProvider() {
        *
        *
        * @param {string|function(scope)} obj Evaluated as {@link guide/expression expression}. The
-       *    expression value should evaluate to an object or an array which is observed on each
+       *    expression value should evaluate to an object or an data_array which is observed on each
        *    {@link ng.$rootScope.Scope#$digest $digest} cycle. Any shallow change within the
        *    collection will trigger a call to the `listener`.
        *
@@ -15476,7 +15476,7 @@ function $RootScopeProvider() {
             }
           } else if (isArrayLike(newValue)) {
             if (oldValue !== internalArray) {
-              // we are transitioning from something which was not an array into array.
+              // we are transitioning from something which was not an data_array into data_array.
               oldValue = internalArray;
               oldLength = oldValue.length = 0;
               changeDetected++;
@@ -16080,7 +16080,7 @@ function $RootScopeProvider() {
           event.currentScope = scope;
           for (i = 0, length = namedListeners.length; i < length; i++) {
 
-            // if listeners were deregistered, defragment the array
+            // if listeners were deregistered, defragment the data_array
             if (!namedListeners[i]) {
               namedListeners.splice(i, 1);
               i--;
@@ -16153,7 +16153,7 @@ function $RootScopeProvider() {
           event.currentScope = current;
           listeners = current.$$listeners[name] || [];
           for (i = 0, length = listeners.length; i < length; i++) {
-            // if listeners were deregistered, defragment the array
+            // if listeners were deregistered, defragment the data_array
             if (!listeners[i]) {
               listeners.splice(i, 1);
               i--;
@@ -16464,15 +16464,15 @@ function $SceDelegateProvider() {
    * @kind function
    *
    * @param {Array=} whitelist When provided, replaces the resourceUrlWhitelist with the value
-   *     provided.  This must be an array or null.  A snapshot of this array is used so further
-   *     changes to the array are ignored.
+   *     provided.  This must be an data_array or null.  A snapshot of this data_array is used so further
+   *     changes to the data_array are ignored.
    *
    *     Follow {@link ng.$sce#resourceUrlPatternItem this link} for a description of the items
-   *     allowed in this array.
+   *     allowed in this data_array.
    *
-   *     Note: **an empty whitelist array will block all URLs**!
+   *     Note: **an empty whitelist data_array will block all URLs**!
    *
-   * @return {Array} the currently set whitelist array.
+   * @return {Array} the currently set whitelist data_array.
    *
    * The **default value** when no whitelist has been explicitly set is `['self']` allowing only
    * same origin resource requests.
@@ -16493,11 +16493,11 @@ function $SceDelegateProvider() {
    * @kind function
    *
    * @param {Array=} blacklist When provided, replaces the resourceUrlBlacklist with the value
-   *     provided.  This must be an array or null.  A snapshot of this array is used so further
-   *     changes to the array are ignored.
+   *     provided.  This must be an data_array or null.  A snapshot of this data_array is used so further
+   *     changes to the data_array are ignored.
    *
    *     Follow {@link ng.$sce#resourceUrlPatternItem this link} for a description of the items
-   *     allowed in this array.
+   *     allowed in this data_array.
    *
    *     The typical usage for the blacklist is to **block
    *     [open redirects](http://cwe.mitre.org/data/definitions/601.html)** served by your domain as
@@ -16505,9 +16505,9 @@ function $SceDelegateProvider() {
    *
    *     Finally, **the blacklist overrides the whitelist** and has the final say.
    *
-   * @return {Array} the currently set blacklist array.
+   * @return {Array} the currently set blacklist data_array.
    *
-   * The **default value** when no whitelist has been explicitly set is the empty array (i.e. there
+   * The **default value** when no whitelist has been explicitly set is the empty data_array (i.e. there
    * is no blacklist.)
    *
    * @description
@@ -17557,7 +17557,7 @@ function $$TestabilityProvider() {
      * @name $$testability#findBindings
      *
      * @description
-     * Returns an array of elements that are bound (via ng-bind or {{}})
+     * Returns an data_array of elements that are bound (via ng-bind or {{}})
      * to expressions matching the input.
      *
      * @param {Element} element The element root to search from.
@@ -17592,7 +17592,7 @@ function $$TestabilityProvider() {
      * @name $$testability#findModels
      *
      * @description
-     * Returns an array of elements that are two-way found via ng-model to
+     * Returns an data_array of elements that are two-way found via ng-model to
      * expressions matching the input.
      *
      * @param {Element} element The element root to search from.
@@ -18121,43 +18121,43 @@ function $FilterProvider($provide) {
  * @kind function
  *
  * @description
- * Selects a subset of items from `array` and returns it as a new array.
+ * Selects a subset of items from `data_array` and returns it as a new data_array.
  *
- * @param {Array} array The source array.
+ * @param {Array} data_array The source data_array.
  * @param {string|Object|function()} expression The predicate to be used for selecting items from
- *   `array`.
+ *   `data_array`.
  *
  *   Can be one of:
  *
- *   - `string`: The string is used for matching against the contents of the `array`. All strings or
- *     objects with string properties in `array` that match this string will be returned. This also
+ *   - `string`: The string is used for matching against the contents of the `data_array`. All strings or
+ *     objects with string properties in `data_array` that match this string will be returned. This also
  *     applies to nested object properties.
  *     The predicate can be negated by prefixing the string with `!`.
  *
  *   - `Object`: A pattern object can be used to filter specific properties on objects contained
- *     by `array`. For example `{name:"M", phone:"1"}` predicate will return an array of items
+ *     by `data_array`. For example `{name:"M", phone:"1"}` predicate will return an data_array of items
  *     which have property `name` containing "M" and property `phone` containing "1". A special
  *     property name `$` can be used (as in `{$:"text"}`) to accept a match against any
  *     property of the object or its nested object properties. That's equivalent to the simple
  *     substring match with a `string` as described above. The predicate can be negated by prefixing
  *     the string with `!`.
- *     For example `{name: "!M"}` predicate will return an array of items which have property `name`
+ *     For example `{name: "!M"}` predicate will return an data_array of items which have property `name`
  *     not containing "M".
  *
  *     Note that a named property will match properties on the same level only, while the special
- *     `$` property will match properties on the same level or deeper. E.g. an array item like
+ *     `$` property will match properties on the same level or deeper. E.g. an data_array item like
  *     `{name: {first: 'John', last: 'Doe'}}` will **not** be matched by `{name: 'John'}`, but
  *     **will** be matched by `{$: 'John'}`.
  *
- *   - `function(value, index, array)`: A predicate function can be used to write arbitrary filters.
- *     The function is called for each element of the array, with the element, its index, and
- *     the entire array itself as arguments.
+ *   - `function(value, index, data_array)`: A predicate function can be used to write arbitrary filters.
+ *     The function is called for each element of the data_array, with the element, its index, and
+ *     the entire data_array itself as arguments.
  *
- *     The final result is an array of those elements that the predicate returned true for.
+ *     The final result is an data_array of those elements that the predicate returned true for.
  *
  * @param {function(actual, expected)|true|undefined} comparator Comparator which is used in
  *     determining if the expected value (from the filter expression) and actual value (from
- *     the object in the array) should be considered a match.
+ *     the object in the data_array) should be considered a match.
  *
  *   Can be one of:
  *
@@ -18248,7 +18248,7 @@ function filterFilter() {
       if (array == null) {
         return array;
       } else {
-        throw minErr('filter')('notarray', 'Expected array but received: {0}', array);
+        throw minErr('filter')('notarray', 'Expected data_array but received: {0}', array);
       }
     }
 
@@ -18323,7 +18323,7 @@ function deepCompare(actual, expected, comparator, matchAgainstAnyProp, dontMatc
   if ((expectedType === 'string') && (expected.charAt(0) === '!')) {
     return !deepCompare(actual, expected.substring(1), comparator, matchAgainstAnyProp);
   } else if (isArray(actual)) {
-    // In case `actual` is an array, consider it a match
+    // In case `actual` is an data_array, consider it a match
     // if ANY of it's items matches `expected`
     return actual.some(function(item) {
       return deepCompare(item, expected, comparator, matchAgainstAnyProp);
@@ -18955,20 +18955,20 @@ var uppercaseFilter = valueFn(uppercase);
  * @kind function
  *
  * @description
- * Creates a new array or string containing only a specified number of elements. The elements
- * are taken from either the beginning or the end of the source array, string or number, as specified by
+ * Creates a new data_array or string containing only a specified number of elements. The elements
+ * are taken from either the beginning or the end of the source data_array, string or number, as specified by
  * the value and sign (positive or negative) of `limit`. If a number is used as input, it is
  * converted to a string.
  *
- * @param {Array|string|number} input Source array, string or number to be limited.
- * @param {string|number} limit The length of the returned array or string. If the `limit` number
- *     is positive, `limit` number of items from the beginning of the source array/string are copied.
- *     If the number is negative, `limit` number  of items from the end of the source array/string
- *     are copied. The `limit` will be trimmed if it exceeds `array.length`. If `limit` is undefined,
+ * @param {Array|string|number} input Source data_array, string or number to be limited.
+ * @param {string|number} limit The length of the returned data_array or string. If the `limit` number
+ *     is positive, `limit` number of items from the beginning of the source data_array/string are copied.
+ *     If the number is negative, `limit` number  of items from the end of the source data_array/string
+ *     are copied. The `limit` will be trimmed if it exceeds `data_array.length`. If `limit` is undefined,
  *     the input will be returned unchanged.
  * @param {(string|number)=} begin Index at which to begin limitation. As a negative index, `begin`
  *     indicates an offset from the end of `input`. Defaults to `0`.
- * @returns {Array|string} A new sub-array or substring of length `limit` or less if input array
+ * @returns {Array|string} A new sub-data_array or substring of length `limit` or less if input data_array
  *     had less than `limit` elements.
  *
  * @example
@@ -19011,7 +19011,7 @@ var uppercaseFilter = valueFn(uppercase);
        var limitedLetters = element(by.binding('letters | limitTo:letterLimit'));
        var limitedLongNumber = element(by.binding('longNumber | limitTo:longNumberLimit'));
 
-       it('should limit the number array to first three items', function() {
+       it('should limit the number data_array to first three items', function() {
          expect(numLimitInput.getAttribute('value')).toBe('3');
          expect(letterLimitInput.getAttribute('value')).toBe('3');
          expect(longNumberLimitInput.getAttribute('value')).toBe('3');
@@ -19033,7 +19033,7 @@ var uppercaseFilter = valueFn(uppercase);
        //   expect(limitedLongNumber.getText()).toEqual('Output long number: 342');
        // });
 
-       it('should not exceed the maximum size of input array', function() {
+       it('should not exceed the maximum size of input data_array', function() {
          numLimitInput.clear();
          numLimitInput.sendKeys('100');
          letterLimitInput.clear();
@@ -19080,11 +19080,11 @@ function limitToFilter() {
  * @kind function
  *
  * @description
- * Orders a specified `array` by the `expression` predicate. It is ordered alphabetically
+ * Orders a specified `data_array` by the `expression` predicate. It is ordered alphabetically
  * for strings and numerically for numbers. Note: if you notice numbers are not being sorted
  * as expected, make sure they are actually being saved as numbers and not strings.
  *
- * @param {Array} array The array to sort.
+ * @param {Array} data_array The data_array to sort.
  * @param {function(*)|string|Array.<(function(*)|string)>=} expression A predicate to be
  *    used by the comparator to determine the order of elements.
  *
@@ -19098,15 +19098,15 @@ function limitToFilter() {
  *      is interpreted as a property name to be used in comparisons (for example `"special name"`
  *      to sort object by the value of their `special name` property). An expression can be
  *      optionally prefixed with `+` or `-` to control ascending or descending sort order
- *      (for example, `+name` or `-name`). If no property is provided, (e.g. `'+'`) then the array
+ *      (for example, `+name` or `-name`). If no property is provided, (e.g. `'+'`) then the data_array
  *      element itself is used to compare where sorting.
- *    - `Array`: An array of function or string predicates. The first predicate in the array
+ *    - `Array`: An data_array of function or string predicates. The first predicate in the data_array
  *      is used for sorting, but when two items are equivalent, the next predicate is used.
  *
  *    If the predicate is missing or empty then it defaults to `'+'`.
  *
- * @param {boolean=} reverse Reverse the order of the array.
- * @returns {Array} Sorted copy of the source array.
+ * @param {boolean=} reverse Reverse the order of the data_array.
+ * @returns {Array} Sorted copy of the source data_array.
  *
  *
  * @example
@@ -21294,7 +21294,7 @@ var inputType = {
    *    interaction with the input element.
    * @param {string} ngValue Angular expression to which `ngModel` will be be set when the radio
    *    is selected. Should be used instead of the `value` attribute if you need
-   *    a non-string `ngModel` (`boolean`, `array`, ...).
+   *    a non-string `ngModel` (`boolean`, `data_array`, ...).
    *
    * @example
       <example name="radio-input-directive" module="radioExample">
@@ -22509,8 +22509,8 @@ function classDirective(name, selector) {
  * 2. If the expression evaluates to an object, then for each key-value pair of the
  * object with a truthy value the corresponding key is used as a class name.
  *
- * 3. If the expression evaluates to an array, each element of the array should either be a string as in
- * type 1 or an object as in type 2. This means that you can mix strings and objects together in an array
+ * 3. If the expression evaluates to an data_array, each element of the data_array should either be a string as in
+ * type 1 or an object as in type 2. This means that you can mix strings and objects together in an data_array
  * to give you more control over what CSS classes appear. See the code below for an example of this.
  *
  *
@@ -22527,7 +22527,7 @@ function classDirective(name, selector) {
  * @element ANY
  * @param {expression} ngClass {@link guide/expression Expression} to eval. The result
  *   of the evaluation can be a string representing space delimited class
- *   names, an array, or a map of class names to boolean values. In the case of a map, the
+ *   names, an data_array, or a map of class names to boolean values. In the case of a map, the
  *   names of the properties whose values are truthy will be added as css classes to the
  *   element.
  *
@@ -22604,7 +22604,7 @@ function classDirective(name, selector) {
          expect(ps.get(1).getAttribute('class')).toBe('red');
        });
 
-       it('array example should have 3 classes', function() {
+       it('data_array example should have 3 classes', function() {
          expect(ps.get(2).getAttribute('class')).toBe('');
          element(by.model('style1')).sendKeys('bold');
          element(by.model('style2')).sendKeys('strike');
@@ -22612,7 +22612,7 @@ function classDirective(name, selector) {
          expect(ps.get(2).getAttribute('class')).toBe('bold strike red');
        });
 
-       it('array with map example should have 2 classes', function() {
+       it('data_array with map example should have 2 classes', function() {
          expect(ps.last().getAttribute('class')).toBe('');
          element(by.model('style4')).sendKeys('bold');
          element(by.model('warning')).click();
@@ -22686,7 +22686,7 @@ var ngClassDirective = classDirective('', true);
  *
  * @element ANY
  * @param {expression} ngClassOdd {@link guide/expression Expression} to eval. The result
- *   of the evaluation can be a string representing space delimited class names or an array.
+ *   of the evaluation can be a string representing space delimited class names or an data_array.
  *
  * @example
    <example>
@@ -22734,7 +22734,7 @@ var ngClassOddDirective = classDirective('Odd', 0);
  *
  * @element ANY
  * @param {expression} ngClassEven {@link guide/expression Expression} to eval. The
- *   result of the evaluation can be a string representing space delimited class names or an array.
+ *   result of the evaluation can be a string representing space delimited class names or an data_array.
  *
  * @example
    <example>
@@ -24209,7 +24209,7 @@ var ngInitDirective = ngDirective({
  * @name ngList
  *
  * @description
- * Text input that converts between a delimited string and an array of strings. The default
+ * Text input that converts between a delimited string and an data_array of strings. The default
  * delimiter is a comma followed by a space - equivalent to `ng-list=", "`. You can specify a custom
  * delimiter as the value of the `ngList` attribute - for example, `ng-list=" | "`.
  *
@@ -24324,7 +24324,7 @@ var ngListDirective = function() {
         return undefined;
       });
 
-      // Override the standard $isEmpty because an empty array means the input is empty.
+      // Override the standard $isEmpty because an empty data_array means the input is empty.
       ctrl.$isEmpty = function(value) {
         return !value || !value.length;
       };
@@ -24358,7 +24358,7 @@ var $ngModelMinErr = new minErr('ngModel');
  * @property {string} $viewValue Actual string value in the view.
  * @property {*} $modelValue The value in the model that the control is bound to.
  * @property {Array.<Function>} $parsers Array of functions to execute, as a pipeline, whenever
-       the control reads value from the DOM. The functions are called in array order, each passing
+       the control reads value from the DOM. The functions are called in data_array order, each passing
        its return value through to the next. The last return value is forwarded to the
        {@link ngModel.NgModelController#$validators `$validators`} collection.
 
@@ -24372,7 +24372,7 @@ is set to `true`. The parse error is stored in `ngModel.$error.parse`.
 
  *
  * @property {Array.<Function>} $formatters Array of functions to execute, as a pipeline, whenever
-       the model value changes. The functions are called in reverse array order, each passing the value through to the
+       the model value changes. The functions are called in reverse data_array order, each passing the value through to the
        next. The last return value is used as the actual DOM value.
        Used to format / convert values for display in the control.
  * ```js
@@ -25733,7 +25733,7 @@ var ngOptionsMinErr = minErr('ngOptions');
  * @description
  *
  * The `ngOptions` attribute can be used to dynamically generate a list of `<option>`
- * elements for the `<select>` element using the array or object obtained by evaluating the
+ * elements for the `<select>` element using the data_array or object obtained by evaluating the
  * `ngOptions` comprehension expression.
  *
  * In many cases, `ngRepeat` can be used on `<option>` elements instead of `ngOptions` to achieve a
@@ -25744,7 +25744,7 @@ var ngOptionsMinErr = minErr('ngOptions');
  *  to a non-string value. This is because an option element can only be bound to string values at
  * present.
  *
- * When an item in the `<select>` menu is selected, the array element or object property
+ * When an item in the `<select>` menu is selected, the data_array element or object property
  * represented by the selected option will be bound to the model identified by the `ngModel`
  * directive.
  *
@@ -25764,14 +25764,14 @@ var ngOptionsMinErr = minErr('ngOptions');
  * changes.
  *
  * Note that `$watchCollection` does a shallow comparison of the properties of the object (or the items in the collection
- * if the model is an array). This means that changing a property deeper inside the object/collection that the
+ * if the model is an data_array). This means that changing a property deeper inside the object/collection that the
  * first level will not trigger a re-rendering.
  *
  *
  * ## `select` **`as`**
  *
  * Using `select` **`as`** will bind the result of the `select` expression to the model, but
- * the value of the `<select>` and `<option>` html elements will be either the index (for array data sources)
+ * the value of the `<select>` and `<option>` html elements will be either the index (for data_array data sources)
  * or property name (for object data sources) of the value within the collection. If a **`track by`** expression
  * is used, the result of that expression will be set as the value of the `option` and `select` elements.
  *
@@ -25806,7 +25806,7 @@ var ngOptionsMinErr = minErr('ngOptions');
  * of the data source (to `item` in this example). To calculate whether an element is selected, we do the
  * following:
  *
- * 1. Apply **`track by`** to the elements in the array. In the example: `[1, 2]`
+ * 1. Apply **`track by`** to the elements in the data_array. In the example: `[1, 2]`
  * 2. Apply **`track by`** to the already selected value in `ngModel`.
  *    In the example: this is not possible as **`track by`** refers to `item.id`, but the selected
  *    value from `ngModel` is `{name: 'aSubItem'}`, so the **`track by`** expression is applied to
@@ -25822,14 +25822,14 @@ var ngOptionsMinErr = minErr('ngOptions');
  *    `required` when you want to data-bind to the `required` attribute.
  * @param {comprehension_expression=} ngOptions in one of the following forms:
  *
- *   * for array data sources:
- *     * `label` **`for`** `value` **`in`** `array`
- *     * `select` **`as`** `label` **`for`** `value` **`in`** `array`
- *     * `label` **`group by`** `group` **`for`** `value` **`in`** `array`
- *     * `label` **`disable when`** `disable` **`for`** `value` **`in`** `array`
- *     * `label` **`group by`** `group` **`for`** `value` **`in`** `array` **`track by`** `trackexpr`
- *     * `label` **`disable when`** `disable` **`for`** `value` **`in`** `array` **`track by`** `trackexpr`
- *     * `label` **`for`** `value` **`in`** `array` | orderBy:`orderexpr` **`track by`** `trackexpr`
+ *   * for data_array data sources:
+ *     * `label` **`for`** `value` **`in`** `data_array`
+ *     * `select` **`as`** `label` **`for`** `value` **`in`** `data_array`
+ *     * `label` **`group by`** `group` **`for`** `value` **`in`** `data_array`
+ *     * `label` **`disable when`** `disable` **`for`** `value` **`in`** `data_array`
+ *     * `label` **`group by`** `group` **`for`** `value` **`in`** `data_array` **`track by`** `trackexpr`
+ *     * `label` **`disable when`** `disable` **`for`** `value` **`in`** `data_array` **`track by`** `trackexpr`
+ *     * `label` **`for`** `value` **`in`** `data_array` | orderBy:`orderexpr` **`track by`** `trackexpr`
  *        (for including a filter with `track by`)
  *   * for object data sources:
  *     * `label` **`for (`**`key` **`,`** `value`**`) in`** `object`
@@ -25843,8 +25843,8 @@ var ngOptionsMinErr = minErr('ngOptions');
  *
  * Where:
  *
- *   * `array` / `object`: an expression which evaluates to an array / object to iterate over.
- *   * `value`: local variable which will refer to each item in the `array` or each property value
+ *   * `data_array` / `object`: an expression which evaluates to an data_array / object to iterate over.
+ *   * `value`: local variable which will refer to each item in the `data_array` or each property value
  *      of `object` during iteration.
  *   * `key`: local variable which will refer to a property name in `object` during iteration.
  *   * `label`: The result of this expression will be the label for `<option>` element. The
@@ -25855,8 +25855,8 @@ var ngOptionsMinErr = minErr('ngOptions');
  *      DOM element.
  *   * `disable`: The result of this expression will be used to disable the rendered `<option>`
  *      element. Return `true` to disable.
- *   * `trackexpr`: Used when working with an array of objects. The result of this expression will be
- *      used to identify the objects in the array. The `trackexpr` will most likely refer to the
+ *   * `trackexpr`: Used when working with an data_array of objects. The result of this expression will be
+ *      used to identify the objects in the data_array. The `trackexpr` will most likely refer to the
  *     `value` variable (e.g. `value.propertyName`). With this the selection is preserved
  *      even when the options are recreated (e.g. reloaded from the server).
  *
@@ -25941,7 +25941,7 @@ var NG_OPTIONS_REGEXP = /^\s*([\s\S]+?)(?:\s+as\s+([\s\S]+?))?(?:\s+group\s+by\s
                         // 2: label expression (displayFn)
                         // 3: group by expression (groupByFn)
                         // 4: disable when expression (disableWhenFn)
-                        // 5: array item variable name
+                        // 5: data_array item variable name
                         // 6: object item key variable name
                         // 7: object item value variable name
                         // 8: collection expression
@@ -26729,7 +26729,7 @@ var ngPluralizeDirective = ['$locale', '$interpolate', '$log', function($locale,
  * keys in the order in which they were defined, although there are exceptions when keys are deleted
  * and reinstated. See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/delete#Cross-browser_issues
  *
- * If this is not desired, the recommended workaround is to convert your object into an array
+ * If this is not desired, the recommended workaround is to convert your object into an data_array
  * that is sorted into the order that you prefer before providing it to `ngRepeat`.  You could
  * do this with a filter such as [toArrayFilter](http://ngmodules.org/modules/angular-toArrayFilter)
  * or implement a `$watch` on the object yourself.
@@ -26869,11 +26869,11 @@ var ngPluralizeDirective = ['$locale', '$interpolate', '$log', function($locale,
  *     Note that the tracking expression must come last, after any filters, and the alias expression.
  *
  *     For example: `item in items` is equivalent to `item in items track by $id(item)`. This implies that the DOM elements
- *     will be associated by item identity in the array.
+ *     will be associated by item identity in the data_array.
  *
  *     For example: `item in items track by $id(item)`. A built in `$id()` function can be used to assign a unique
- *     `$$hashKey` property to each item in the array. This property is then used as a key to associated DOM elements
- *     with the corresponding item in the array by identity. Moving the same object in array would move the DOM
+ *     `$$hashKey` property to each item in the data_array. This property is then used as a key to associated DOM elements
+ *     with the corresponding item in the data_array by identity. Moving the same object in data_array would move the DOM
  *     element in the same way in the DOM.
  *
  *     For example: `item in items track by item.id` is a typical pattern when the items come from the database. In this
@@ -28044,7 +28044,7 @@ var SelectController =
  * more flexibility in how the `<select>`'s model is assigned via the `select` **`as`** part of the
  * comprehension expression.
  *
- * When an item in the `<select>` menu is selected, the array element or object property
+ * When an item in the `<select>` menu is selected, the data_array element or object property
  * represented by the selected option will be bound to the model identified by the `ngModel`
  * directive.
  *
@@ -28136,7 +28136,7 @@ var selectDirective = function() {
       // If the select allows multiple values then we need to modify how we read and write
       // values from and to the control; also what it means for the value to be empty and
       // we have to add an extra watch since ngModel doesn't work well with arrays - it
-      // doesn't trigger rendering if only an item in the array changes.
+      // doesn't trigger rendering if only an item in the data_array changes.
       if (attr.multiple) {
 
         // Read value now needs to check each option to see if it is selected
@@ -28159,7 +28159,7 @@ var selectDirective = function() {
         };
 
         // we have to do it on each watch since ngModel watches reference, but
-        // we need to work of an array, so we need to see if anything was inserted/removed
+        // we need to work of an data_array, so we need to see if anything was inserted/removed
         var lastView, lastViewRef = NaN;
         scope.$watch(function selectMultipleWatch() {
           if (lastViewRef === ngModelCtrl.$viewValue && !equals(lastView, ngModelCtrl.$viewValue)) {
