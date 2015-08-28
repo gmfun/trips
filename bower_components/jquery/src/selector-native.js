@@ -125,7 +125,7 @@ jQuery.extend({
 			nodeType = elem.nodeType;
 
 		if ( !nodeType ) {
-			// If no nodeType, this is expected to be an array
+			// If no nodeType, this is expected to be an data_array
 			while ( (node = elem[i++]) ) {
 				// Do not traverse comment nodes
 				ret += jQuery.text( node );

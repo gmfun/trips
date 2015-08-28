@@ -53,18 +53,18 @@ jQuery.fn = jQuery.prototype = {
 	},
 
 	// Get the Nth element in the matched element set OR
-	// Get the whole matched element set as a clean array
+	// Get the whole matched element set as a clean data_array
 	get: function( num ) {
 		return num != null ?
 
 			// Return just the one element from the set
 			( num < 0 ? this[ num + this.length ] : this[ num ] ) :
 
-			// Return all the elements in a clean array
+			// Return all the elements in a clean data_array
 			slice.call( this );
 	},
 
-	// Take an array of elements and push it onto the stack
+	// Take an data_array of elements and push it onto the stack
 	// (returning the new matched element set)
 	pushStack: function( elems ) {
 
@@ -80,7 +80,7 @@ jQuery.fn = jQuery.prototype = {
 	},
 
 	// Execute a callback for every element in the matched set.
-	// (You can seed the arguments with an array of args, but this is
+	// (You can seed the arguments with an data_array of args, but this is
 	// only used internally.)
 	each: function( callback, args ) {
 		return jQuery.each( this, callback, args );
@@ -388,7 +388,7 @@ jQuery.extend({
 			length = elems.length,
 			callbackExpect = !invert;
 
-		// Go through the array, only saving the items
+		// Go through the data_array, only saving the items
 		// that pass the validator function
 		for ( ; i < length; i++ ) {
 			callbackInverse = !callback( elems[ i ], i );
@@ -408,7 +408,7 @@ jQuery.extend({
 			isArray = isArraylike( elems ),
 			ret = [];
 
-		// Go through the array, translating each of the items to their new values
+		// Go through the data_array, translating each of the items to their new values
 		if ( isArray ) {
 			for ( ; i < length; i++ ) {
 				value = callback( elems[ i ], i, arg );
@@ -494,7 +494,7 @@ function isArraylike( obj ) {
 		return true;
 	}
 
-	return type === "array" || length === 0 ||
+	return type === "data_array" || length === 0 ||
 		typeof length === "number" && length > 0 && ( length - 1 ) in obj;
 }
 

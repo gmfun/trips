@@ -34,7 +34,7 @@
   var HOT_COUNT = 150,
       HOT_SPAN = 16;
 
-  /** Used as the size to enable large array optimizations. */
+  /** Used as the size to enable large data_array optimizations. */
   var LARGE_ARRAY_SIZE = 200;
 
   /** Used to indicate the type of lazy iteratees. */
@@ -313,7 +313,7 @@
    * support for callback shorthands and `this` binding.
    *
    * @private
-   * @param {Array} array The array to search.
+   * @param {Array} array The data_array to search.
    * @param {Function} predicate The function invoked per iteration.
    * @param {boolean} [fromRight] Specify iterating from right to left.
    * @returns {number} Returns the index of the matched value, else `-1`.
@@ -334,7 +334,7 @@
    * The base implementation of `_.indexOf` without support for binary searches.
    *
    * @private
-   * @param {Array} array The array to search.
+   * @param {Array} array The data_array to search.
    * @param {*} value The value to search for.
    * @param {number} fromIndex The index to search from.
    * @returns {number} Returns the index of the matched value, else `-1`.
@@ -519,10 +519,10 @@
   }
 
   /**
-   * Gets the index at which the first occurrence of `NaN` is found in `array`.
+   * Gets the index at which the first occurrence of `NaN` is found in `data_array`.
    *
    * @private
-   * @param {Array} array The array to search.
+   * @param {Array} array The data_array to search.
    * @param {number} fromIndex The index to search from.
    * @param {boolean} [fromRight] Specify iterating from right to left.
    * @returns {number} Returns the index of the matched `NaN`, else `-1`.
@@ -565,13 +565,13 @@
   }
 
   /**
-   * Replaces all `placeholder` elements in `array` with an internal placeholder
-   * and returns an array of their indexes.
+   * Replaces all `placeholder` elements in `data_array` with an internal placeholder
+   * and returns an data_array of their indexes.
    *
    * @private
-   * @param {Array} array The array to modify.
+   * @param {Array} array The data_array to modify.
    * @param {*} placeholder The placeholder to replace.
-   * @returns {Array} Returns the new array of placeholder indexes.
+   * @returns {Array} Returns the new data_array of placeholder indexes.
    */
   function replaceHolders(array, placeholder) {
     var index = -1,
@@ -593,9 +593,9 @@
    * for callback shorthands and `this` binding.
    *
    * @private
-   * @param {Array} array The array to inspect.
+   * @param {Array} array The data_array to inspect.
    * @param {Function} [iteratee] The function invoked per iteration.
-   * @returns {Array} Returns the new duplicate-value-free array.
+   * @returns {Array} Returns the new duplicate-value-free data_array.
    */
   function sortedUniq(array, iteratee) {
     var seen,
@@ -772,14 +772,14 @@
     var NEGATIVE_INFINITY = Number.NEGATIVE_INFINITY,
         POSITIVE_INFINITY = Number.POSITIVE_INFINITY;
 
-    /** Used as references for the maximum length and index of an array. */
+    /** Used as references for the maximum length and index of an data_array. */
     var MAX_ARRAY_LENGTH = 4294967295,
         MAX_ARRAY_INDEX = MAX_ARRAY_LENGTH - 1,
         HALF_MAX_ARRAY_LENGTH = MAX_ARRAY_LENGTH >>> 1;
 
     /**
      * Used as the [maximum length](http://ecma-international.org/ecma-262/6.0/#sec-number.max_safe_integer)
-     * of an array-like value.
+     * of an data_array-like value.
      */
     var MAX_SAFE_INTEGER = 9007199254740991;
 
@@ -1230,12 +1230,12 @@
     /*------------------------------------------------------------------------*/
 
     /**
-     * Creates a new array joining `array` with `other`.
+     * Creates a new data_array joining `data_array` with `other`.
      *
      * @private
-     * @param {Array} array The array to join.
-     * @param {Array} other The other array to join.
-     * @returns {Array} Returns the new concatenated array.
+     * @param {Array} array The data_array to join.
+     * @param {Array} other The other data_array to join.
+     * @returns {Array} Returns the new concatenated data_array.
      */
     function arrayConcat(array, other) {
       var index = -1,
@@ -1254,12 +1254,12 @@
     }
 
     /**
-     * Copies the values of `source` to `array`.
+     * Copies the values of `source` to `data_array`.
      *
      * @private
-     * @param {Array} source The array to copy values from.
-     * @param {Array} [array=[]] The array to copy values to.
-     * @returns {Array} Returns `array`.
+     * @param {Array} source The data_array to copy values from.
+     * @param {Array} [array=[]] The data_array to copy values to.
+     * @returns {Array} Returns `data_array`.
      */
     function arrayCopy(source, array) {
       var index = -1,
@@ -1277,9 +1277,9 @@
      * shorthands and `this` binding.
      *
      * @private
-     * @param {Array} array The array to iterate over.
+     * @param {Array} array The data_array to iterate over.
      * @param {Function} iteratee The function invoked per iteration.
-     * @returns {Array} Returns `array`.
+     * @returns {Array} Returns `data_array`.
      */
     function arrayEach(array, iteratee) {
       var index = -1,
@@ -1298,9 +1298,9 @@
      * callback shorthands and `this` binding.
      *
      * @private
-     * @param {Array} array The array to iterate over.
+     * @param {Array} array The data_array to iterate over.
      * @param {Function} iteratee The function invoked per iteration.
-     * @returns {Array} Returns `array`.
+     * @returns {Array} Returns `data_array`.
      */
     function arrayEachRight(array, iteratee) {
       var length = array.length;
@@ -1318,7 +1318,7 @@
      * shorthands and `this` binding.
      *
      * @private
-     * @param {Array} array The array to iterate over.
+     * @param {Array} array The data_array to iterate over.
      * @param {Function} predicate The function invoked per iteration.
      * @returns {boolean} Returns `true` if all elements pass the predicate check,
      *  else `false`.
@@ -1340,7 +1340,7 @@
      * with one argument: (value).
      *
      * @private
-     * @param {Array} array The array to iterate over.
+     * @param {Array} array The data_array to iterate over.
      * @param {Function} iteratee The function invoked per iteration.
      * @param {Function} comparator The function used to compare values.
      * @param {*} exValue The initial extremum value.
@@ -1369,9 +1369,9 @@
      * shorthands and `this` binding.
      *
      * @private
-     * @param {Array} array The array to iterate over.
+     * @param {Array} array The data_array to iterate over.
      * @param {Function} predicate The function invoked per iteration.
-     * @returns {Array} Returns the new filtered array.
+     * @returns {Array} Returns the new filtered data_array.
      */
     function arrayFilter(array, predicate) {
       var index = -1,
@@ -1393,9 +1393,9 @@
      * shorthands and `this` binding.
      *
      * @private
-     * @param {Array} array The array to iterate over.
+     * @param {Array} array The data_array to iterate over.
      * @param {Function} iteratee The function invoked per iteration.
-     * @returns {Array} Returns the new mapped array.
+     * @returns {Array} Returns the new mapped data_array.
      */
     function arrayMap(array, iteratee) {
       var index = -1,
@@ -1409,12 +1409,12 @@
     }
 
     /**
-     * Appends the elements of `values` to `array`.
+     * Appends the elements of `values` to `data_array`.
      *
      * @private
-     * @param {Array} array The array to modify.
+     * @param {Array} array The data_array to modify.
      * @param {Array} values The values to append.
-     * @returns {Array} Returns `array`.
+     * @returns {Array} Returns `data_array`.
      */
     function arrayPush(array, values) {
       var index = -1,
@@ -1432,10 +1432,10 @@
      * shorthands and `this` binding.
      *
      * @private
-     * @param {Array} array The array to iterate over.
+     * @param {Array} array The data_array to iterate over.
      * @param {Function} iteratee The function invoked per iteration.
      * @param {*} [accumulator] The initial value.
-     * @param {boolean} [initFromArray] Specify using the first element of `array`
+     * @param {boolean} [initFromArray] Specify using the first element of `data_array`
      *  as the initial value.
      * @returns {*} Returns the accumulated value.
      */
@@ -1457,10 +1457,10 @@
      * callback shorthands and `this` binding.
      *
      * @private
-     * @param {Array} array The array to iterate over.
+     * @param {Array} array The data_array to iterate over.
      * @param {Function} iteratee The function invoked per iteration.
      * @param {*} [accumulator] The initial value.
-     * @param {boolean} [initFromArray] Specify using the last element of `array`
+     * @param {boolean} [initFromArray] Specify using the last element of `data_array`
      *  as the initial value.
      * @returns {*} Returns the accumulated value.
      */
@@ -1480,7 +1480,7 @@
      * shorthands and `this` binding.
      *
      * @private
-     * @param {Array} array The array to iterate over.
+     * @param {Array} array The data_array to iterate over.
      * @param {Function} predicate The function invoked per iteration.
      * @returns {boolean} Returns `true` if any element passes the predicate check,
      *  else `false`.
@@ -1502,7 +1502,7 @@
      * shorthands and `this` binding..
      *
      * @private
-     * @param {Array} array The array to iterate over.
+     * @param {Array} array The data_array to iterate over.
      * @param {Function} iteratee The function invoked per iteration.
      * @returns {number} Returns the sum.
      */
@@ -1598,7 +1598,7 @@
      * @private
      * @param {Array|Object} collection The collection to iterate over.
      * @param {number[]|string[]} props The property names or indexes of elements to pick.
-     * @returns {Array} Returns the new array of picked elements.
+     * @returns {Array} Returns the new data_array of picked elements.
      */
     function baseAt(collection, props) {
       var index = -1,
@@ -1774,13 +1774,13 @@
     }
 
     /**
-     * The base implementation of `_.difference` which accepts a single array
+     * The base implementation of `_.difference` which accepts a single data_array
      * of values to exclude.
      *
      * @private
-     * @param {Array} array The array to inspect.
+     * @param {Array} array The data_array to inspect.
      * @param {Array} values The values to exclude.
-     * @returns {Array} Returns the new array of filtered values.
+     * @returns {Array} Returns the new data_array of filtered values.
      */
     function baseDifference(array, values) {
       var length = array ? array.length : 0,
@@ -1891,11 +1891,11 @@
      * The base implementation of `_.fill` without an iteratee call guard.
      *
      * @private
-     * @param {Array} array The array to fill.
-     * @param {*} value The value to fill `array` with.
+     * @param {Array} array The data_array to fill.
+     * @param {*} value The value to fill `data_array` with.
      * @param {number} [start=0] The start position.
-     * @param {number} [end=array.length] The end position.
-     * @returns {Array} Returns `array`.
+     * @param {number} [end=data_array.length] The end position.
+     * @returns {Array} Returns `data_array`.
      */
     function baseFill(array, value, start, end) {
       var length = array.length;
@@ -1924,7 +1924,7 @@
      * @private
      * @param {Array|Object|string} collection The collection to iterate over.
      * @param {Function} predicate The function invoked per iteration.
-     * @returns {Array} Returns the new filtered array.
+     * @returns {Array} Returns the new filtered data_array.
      */
     function baseFilter(collection, predicate) {
       var result = [];
@@ -1965,11 +1965,11 @@
      * flattening and specifying the start index.
      *
      * @private
-     * @param {Array} array The array to flatten.
+     * @param {Array} array The data_array to flatten.
      * @param {boolean} [isDeep] Specify a deep flatten.
      * @param {boolean} [isStrict] Restrict flattening to arrays-like objects.
      * @param {Array} [result=[]] The initial result value.
-     * @returns {Array} Returns the new flattened array.
+     * @returns {Array} Returns the new flattened data_array.
      */
     function baseFlatten(array, isDeep, isStrict, result) {
       result || (result = []);
@@ -2060,13 +2060,13 @@
     }
 
     /**
-     * The base implementation of `_.functions` which creates an array of
+     * The base implementation of `_.functions` which creates an data_array of
      * `object` function property names filtered from those provided.
      *
      * @private
      * @param {Object} object The object to inspect.
      * @param {Array} props The property names to filter.
-     * @returns {Array} Returns the new array of filtered property names.
+     * @returns {Array} Returns the new data_array of filtered property names.
      */
     function baseFunctions(object, props) {
       var index = -1,
@@ -2265,7 +2265,7 @@
      * @private
      * @param {Array|Object|string} collection The collection to iterate over.
      * @param {Function} iteratee The function invoked per iteration.
-     * @returns {Array} Returns the new mapped array.
+     * @returns {Array} Returns the new mapped data_array.
      */
     function baseMap(collection, iteratee) {
       var index = -1,
@@ -2473,9 +2473,9 @@
      * index arguments and capturing the removed elements.
      *
      * @private
-     * @param {Array} array The array to modify.
+     * @param {Array} array The data_array to modify.
      * @param {number[]} indexes The indexes of elements to remove.
-     * @returns {Array} Returns `array`.
+     * @returns {Array} Returns `data_array`.
      */
     function basePullAt(array, indexes) {
       var length = array ? indexes.length : 0;
@@ -2542,10 +2542,10 @@
      * The base implementation of `_.slice` without an iteratee call guard.
      *
      * @private
-     * @param {Array} array The array to slice.
+     * @param {Array} array The data_array to slice.
      * @param {number} [start=0] The start position.
-     * @param {number} [end=array.length] The end position.
-     * @returns {Array} Returns the slice of `array`.
+     * @param {number} [end=data_array.length] The end position.
+     * @returns {Array} Returns the slice of `data_array`.
      */
     function baseSlice(array, start, end) {
       var index = -1,
@@ -2591,13 +2591,13 @@
 
     /**
      * The base implementation of `_.sortBy` which uses `comparer` to define
-     * the sort order of `array` and replaces criteria objects with their
+     * the sort order of `data_array` and replaces criteria objects with their
      * corresponding values.
      *
      * @private
-     * @param {Array} array The array to sort.
+     * @param {Array} array The data_array to sort.
      * @param {Function} comparer The function to define sort order.
-     * @returns {Array} Returns `array`.
+     * @returns {Array} Returns `data_array`.
      */
     function baseSortBy(array, comparer) {
       var length = array.length;
@@ -2616,7 +2616,7 @@
      * @param {Array|Object|string} collection The collection to iterate over.
      * @param {Function[]|Object[]|string[]} iteratees The iteratees to sort by.
      * @param {boolean[]} orders The sort orders of `iteratees`.
-     * @returns {Array} Returns the new sorted array.
+     * @returns {Array} Returns the new sorted data_array.
      */
     function baseSortByOrder(collection, iteratees, orders) {
       var callback = getCallback(),
@@ -2656,9 +2656,9 @@
      * and `this` binding.
      *
      * @private
-     * @param {Array} array The array to inspect.
+     * @param {Array} array The data_array to inspect.
      * @param {Function} [iteratee] The function invoked per iteration.
-     * @returns {Array} Returns the new duplicate-value-free array.
+     * @returns {Array} Returns the new duplicate-value-free data_array.
      */
     function baseUniq(array, iteratee) {
       var index = -1,
@@ -2705,13 +2705,13 @@
 
     /**
      * The base implementation of `_.values` and `_.valuesIn` which creates an
-     * array of `object` property values corresponding to the property names
+     * data_array of `object` property values corresponding to the property names
      * of `props`.
      *
      * @private
      * @param {Object} object The object to query.
      * @param {Array} props The property names to get values for.
-     * @returns {Object} Returns the array of property values.
+     * @returns {Object} Returns the data_array of property values.
      */
     function baseValues(object, props) {
       var index = -1,
@@ -2729,11 +2729,11 @@
      * and `_.takeWhile` without support for callback shorthands and `this` binding.
      *
      * @private
-     * @param {Array} array The array to query.
+     * @param {Array} array The data_array to query.
      * @param {Function} predicate The function invoked per iteration.
      * @param {boolean} [isDrop] Specify dropping elements instead of taking them.
      * @param {boolean} [fromRight] Specify iterating from right to left.
-     * @returns {Array} Returns the slice of `array`.
+     * @returns {Array} Returns the slice of `data_array`.
      */
     function baseWhile(array, predicate, isDrop, fromRight) {
       var length = array.length,
@@ -2771,15 +2771,15 @@
     }
 
     /**
-     * Performs a binary search of `array` to determine the index at which `value`
-     * should be inserted into `array` in order to maintain its sort order.
+     * Performs a binary search of `data_array` to determine the index at which `value`
+     * should be inserted into `data_array` in order to maintain its sort order.
      *
      * @private
-     * @param {Array} array The sorted array to inspect.
+     * @param {Array} array The sorted data_array to inspect.
      * @param {*} value The value to evaluate.
      * @param {boolean} [retHighest] Specify returning the highest qualified index.
      * @returns {number} Returns the index at which `value` should be inserted
-     *  into `array`.
+     *  into `data_array`.
      */
     function binaryIndex(array, value, retHighest) {
       var low = 0,
@@ -2803,16 +2803,16 @@
 
     /**
      * This function is like `binaryIndex` except that it invokes `iteratee` for
-     * `value` and each element of `array` to compute their sort ranking. The
+     * `value` and each element of `data_array` to compute their sort ranking. The
      * iteratee is invoked with one argument; (value).
      *
      * @private
-     * @param {Array} array The sorted array to inspect.
+     * @param {Array} array The sorted data_array to inspect.
      * @param {*} value The value to evaluate.
      * @param {Function} iteratee The function invoked per iteration.
      * @param {boolean} [retHighest] Specify returning the highest qualified index.
      * @returns {number} Returns the index at which `value` should be inserted
-     *  into `array`.
+     *  into `data_array`.
      */
     function binaryIndexBy(array, value, iteratee, retHighest) {
       value = iteratee(value);
@@ -2886,11 +2886,11 @@
     }
 
     /**
-     * Creates a clone of the given array buffer.
+     * Creates a clone of the given data_array buffer.
      *
      * @private
-     * @param {ArrayBuffer} buffer The array buffer to clone.
-     * @returns {ArrayBuffer} Returns the cloned array buffer.
+     * @param {ArrayBuffer} buffer The data_array buffer to clone.
+     * @returns {ArrayBuffer} Returns the cloned data_array buffer.
      */
     function bufferClone(buffer) {
       var result = new ArrayBuffer(buffer.byteLength),
@@ -2901,14 +2901,14 @@
     }
 
     /**
-     * Creates an array that is the composition of partially applied arguments,
-     * placeholders, and provided arguments into a single array of arguments.
+     * Creates an data_array that is the composition of partially applied arguments,
+     * placeholders, and provided arguments into a single data_array of arguments.
      *
      * @private
      * @param {Array|Object} args The provided arguments.
      * @param {Array} partials The arguments to prepend to those provided.
      * @param {Array} holders The `partials` placeholder indexes.
-     * @returns {Array} Returns the new array of composed arguments.
+     * @returns {Array} Returns the new data_array of composed arguments.
      */
     function composeArgs(args, partials, holders) {
       var holdersLength = holders.length,
@@ -2938,7 +2938,7 @@
      * @param {Array|Object} args The provided arguments.
      * @param {Array} partials The arguments to append to those provided.
      * @param {Array} holders The `partials` placeholder indexes.
-     * @returns {Array} Returns the new array of composed arguments.
+     * @returns {Array} Returns the new data_array of composed arguments.
      */
     function composeArgsRight(args, partials, holders) {
       var holdersIndex = -1,
@@ -3335,7 +3335,7 @@
      * Creates a function for `_.forEach` or `_.forEachRight`.
      *
      * @private
-     * @param {Function} arrayFunc The function to iterate over an array.
+     * @param {Function} arrayFunc The function to iterate over an data_array.
      * @param {Function} eachFunc The function to iterate over a collection.
      * @returns {Function} Returns the new each function.
      */
@@ -3434,7 +3434,7 @@
      * Creates a function for `_.reduce` or `_.reduceRight`.
      *
      * @private
-     * @param {Function} arrayFunc The function to iterate over an array.
+     * @param {Function} arrayFunc The function to iterate over an data_array.
      * @param {Function} eachFunc The function to iterate over a collection.
      * @returns {Function} Returns the new each function.
      */
@@ -3475,7 +3475,7 @@
 
       function wrapper() {
         // Avoid `arguments` object use disqualifying optimizations by
-        // converting it to an array before providing it to other functions.
+        // converting it to an data_array before providing it to other functions.
         var length = arguments.length,
             index = length,
             args = Array(length);
@@ -3575,7 +3575,7 @@
 
       function wrapper() {
         // Avoid `arguments` object use disqualifying optimizations by
-        // converting it to an array before providing it `func`.
+        // converting it to an data_array before providing it `func`.
         var argsIndex = -1,
             argsLength = arguments.length,
             leftIndex = -1,
@@ -3699,8 +3699,8 @@
      * partial deep comparisons.
      *
      * @private
-     * @param {Array} array The array to compare.
-     * @param {Array} other The other array to compare.
+     * @param {Array} array The data_array to compare.
+     * @param {Array} other The other data_array to compare.
      * @param {Function} equalFunc The function to determine equivalents of values.
      * @param {Function} [customizer] The function to customize comparing arrays.
      * @param {boolean} [isLoose] Specify performing partial comparisons.
@@ -3973,17 +3973,17 @@
     }
 
     /**
-     * Initializes an array clone.
+     * Initializes an data_array clone.
      *
      * @private
-     * @param {Array} array The array to clone.
+     * @param {Array} array The data_array to clone.
      * @returns {Array} Returns the initialized clone.
      */
     function initCloneArray(array) {
       var length = array.length,
           result = new array.constructor(length);
 
-      // Add array properties assigned by `RegExp#exec`.
+      // Add data_array properties assigned by `RegExp#exec`.
       if (length && typeof array[0] == 'string' && hasOwnProperty.call(array, 'index')) {
         result.index = array.index;
         result.input = array.input;
@@ -4065,18 +4065,18 @@
     }
 
     /**
-     * Checks if `value` is array-like.
+     * Checks if `value` is data_array-like.
      *
      * @private
      * @param {*} value The value to check.
-     * @returns {boolean} Returns `true` if `value` is array-like, else `false`.
+     * @returns {boolean} Returns `true` if `value` is data_array-like, else `false`.
      */
     function isArrayLike(value) {
       return value != null && isLength(getLength(value));
     }
 
     /**
-     * Checks if `value` is a valid array-like index.
+     * Checks if `value` is a valid data_array-like index.
      *
      * @private
      * @param {*} value The value to check.
@@ -4153,7 +4153,7 @@
     }
 
     /**
-     * Checks if `value` is a valid array-like length.
+     * Checks if `value` is a valid data_array-like length.
      *
      * **Note:** This function is based on [`ToLength`](http://ecma-international.org/ecma-262/6.0/#sec-tolength).
      *
@@ -4304,14 +4304,14 @@
     }
 
     /**
-     * Reorder `array` according to the specified indexes where the element at
+     * Reorder `data_array` according to the specified indexes where the element at
      * the first index is assigned as the first element, the element at
      * the second index is assigned as the second element, and so on.
      *
      * @private
-     * @param {Array} array The array to reorder.
-     * @param {Array} indexes The arranged array indexes.
-     * @returns {Array} Returns `array`.
+     * @param {Array} array The data_array to reorder.
+     * @param {Array} indexes The arranged data_array indexes.
+     * @returns {Array} Returns `data_array`.
      */
     function reorder(array, indexes) {
       var arrLength = array.length,
@@ -4359,12 +4359,12 @@
     }());
 
     /**
-     * A fallback implementation of `Object.keys` which creates an array of the
+     * A fallback implementation of `Object.keys` which creates an data_array of the
      * own enumerable property names of `object`.
      *
      * @private
      * @param {Object} object The object to query.
-     * @returns {Array} Returns the array of property names.
+     * @returns {Array} Returns the data_array of property names.
      */
     function shimKeys(object) {
       var props = keysIn(object),
@@ -4387,11 +4387,11 @@
     }
 
     /**
-     * Converts `value` to an array-like object if it's not one.
+     * Converts `value` to an data_array-like object if it's not one.
      *
      * @private
      * @param {*} value The value to process.
-     * @returns {Array|Object} Returns the array-like object.
+     * @returns {Array|Object} Returns the data_array-like object.
      */
     function toIterable(value) {
       if (value == null) {
@@ -4415,11 +4415,11 @@
     }
 
     /**
-     * Converts `value` to property path array if it's not one.
+     * Converts `value` to property path data_array if it's not one.
      *
      * @private
      * @param {*} value The value to process.
-     * @returns {Array} Returns the property path array.
+     * @returns {Array} Returns the property path data_array.
      */
     function toPath(value) {
       if (isArray(value)) {
@@ -4448,17 +4448,17 @@
     /*------------------------------------------------------------------------*/
 
     /**
-     * Creates an array of elements split into groups the length of `size`.
+     * Creates an data_array of elements split into groups the length of `size`.
      * If `collection` can't be split evenly, the final chunk will be the remaining
      * elements.
      *
      * @static
      * @memberOf _
      * @category Array
-     * @param {Array} array The array to process.
+     * @param {Array} array The data_array to process.
      * @param {number} [size=1] The length of each chunk.
      * @param- {Object} [guard] Enables use as a callback for functions like `_.map`.
-     * @returns {Array} Returns the new array containing chunks.
+     * @returns {Array} Returns the new data_array containing chunks.
      * @example
      *
      * _.chunk(['a', 'b', 'c', 'd'], 2);
@@ -4485,14 +4485,14 @@
     }
 
     /**
-     * Creates an array with all falsey values removed. The values `false`, `null`,
+     * Creates an data_array with all falsey values removed. The values `false`, `null`,
      * `0`, `""`, `undefined`, and `NaN` are falsey.
      *
      * @static
      * @memberOf _
      * @category Array
-     * @param {Array} array The array to compact.
-     * @returns {Array} Returns the new array of filtered values.
+     * @param {Array} array The data_array to compact.
+     * @returns {Array} Returns the new data_array of filtered values.
      * @example
      *
      * _.compact([0, 1, false, 2, '', 3]);
@@ -4514,16 +4514,16 @@
     }
 
     /**
-     * Creates an array of unique `array` values not included in the other
+     * Creates an data_array of unique `data_array` values not included in the other
      * provided arrays using [`SameValueZero`](http://ecma-international.org/ecma-262/6.0/#sec-samevaluezero)
      * for equality comparisons.
      *
      * @static
      * @memberOf _
      * @category Array
-     * @param {Array} array The array to inspect.
+     * @param {Array} data_array The data_array to inspect.
      * @param {...Array} [values] The arrays of values to exclude.
-     * @returns {Array} Returns the new array of filtered values.
+     * @returns {Array} Returns the new data_array of filtered values.
      * @example
      *
      * _.difference([1, 2, 3], [4, 2]);
@@ -4536,15 +4536,15 @@
     });
 
     /**
-     * Creates a slice of `array` with `n` elements dropped from the beginning.
+     * Creates a slice of `data_array` with `n` elements dropped from the beginning.
      *
      * @static
      * @memberOf _
      * @category Array
-     * @param {Array} array The array to query.
+     * @param {Array} array The data_array to query.
      * @param {number} [n=1] The number of elements to drop.
      * @param- {Object} [guard] Enables use as a callback for functions like `_.map`.
-     * @returns {Array} Returns the slice of `array`.
+     * @returns {Array} Returns the slice of `data_array`.
      * @example
      *
      * _.drop([1, 2, 3]);
@@ -4571,15 +4571,15 @@
     }
 
     /**
-     * Creates a slice of `array` with `n` elements dropped from the end.
+     * Creates a slice of `data_array` with `n` elements dropped from the end.
      *
      * @static
      * @memberOf _
      * @category Array
-     * @param {Array} array The array to query.
+     * @param {Array} array The data_array to query.
      * @param {number} [n=1] The number of elements to drop.
      * @param- {Object} [guard] Enables use as a callback for functions like `_.map`.
-     * @returns {Array} Returns the slice of `array`.
+     * @returns {Array} Returns the slice of `data_array`.
      * @example
      *
      * _.dropRight([1, 2, 3]);
@@ -4607,9 +4607,9 @@
     }
 
     /**
-     * Creates a slice of `array` excluding elements dropped from the end.
+     * Creates a slice of `data_array` excluding elements dropped from the end.
      * Elements are dropped until `predicate` returns falsey. The predicate is
-     * bound to `thisArg` and invoked with three arguments: (value, index, array).
+     * bound to `thisArg` and invoked with three arguments: (value, index, data_array).
      *
      * If a property name is provided for `predicate` the created `_.property`
      * style callback returns the property value of the given element.
@@ -4625,11 +4625,11 @@
      * @static
      * @memberOf _
      * @category Array
-     * @param {Array} array The array to query.
+     * @param {Array} array The data_array to query.
      * @param {Function|Object|string} [predicate=_.identity] The function invoked
      *  per iteration.
      * @param {*} [thisArg] The `this` binding of `predicate`.
-     * @returns {Array} Returns the slice of `array`.
+     * @returns {Array} Returns the slice of `data_array`.
      * @example
      *
      * _.dropRightWhile([1, 2, 3], function(n) {
@@ -4662,9 +4662,9 @@
     }
 
     /**
-     * Creates a slice of `array` excluding elements dropped from the beginning.
+     * Creates a slice of `data_array` excluding elements dropped from the beginning.
      * Elements are dropped until `predicate` returns falsey. The predicate is
-     * bound to `thisArg` and invoked with three arguments: (value, index, array).
+     * bound to `thisArg` and invoked with three arguments: (value, index, data_array).
      *
      * If a property name is provided for `predicate` the created `_.property`
      * style callback returns the property value of the given element.
@@ -4680,11 +4680,11 @@
      * @static
      * @memberOf _
      * @category Array
-     * @param {Array} array The array to query.
+     * @param {Array} array The data_array to query.
      * @param {Function|Object|string} [predicate=_.identity] The function invoked
      *  per iteration.
      * @param {*} [thisArg] The `this` binding of `predicate`.
-     * @returns {Array} Returns the slice of `array`.
+     * @returns {Array} Returns the slice of `data_array`.
      * @example
      *
      * _.dropWhile([1, 2, 3], function(n) {
@@ -4717,25 +4717,25 @@
     }
 
     /**
-     * Fills elements of `array` with `value` from `start` up to, but not
+     * Fills elements of `data_array` with `value` from `start` up to, but not
      * including, `end`.
      *
-     * **Note:** This method mutates `array`.
+     * **Note:** This method mutates `data_array`.
      *
      * @static
      * @memberOf _
      * @category Array
-     * @param {Array} array The array to fill.
-     * @param {*} value The value to fill `array` with.
+     * @param {Array} array The data_array to fill.
+     * @param {*} value The value to fill `data_array` with.
      * @param {number} [start=0] The start position.
-     * @param {number} [end=array.length] The end position.
-     * @returns {Array} Returns `array`.
+     * @param {number} [end=data_array.length] The end position.
+     * @returns {Array} Returns `data_array`.
      * @example
      *
-     * var array = [1, 2, 3];
+     * var data_array = [1, 2, 3];
      *
-     * _.fill(array, 'a');
-     * console.log(array);
+     * _.fill(data_array, 'a');
+     * console.log(data_array);
      * // => ['a', 'a', 'a']
      *
      * _.fill(Array(3), 2);
@@ -4774,7 +4774,7 @@
      * @static
      * @memberOf _
      * @category Array
-     * @param {Array} array The array to search.
+     * @param {Array} data_array The data_array to search.
      * @param {Function|Object|string} [predicate=_.identity] The function invoked
      *  per iteration.
      * @param {*} [thisArg] The `this` binding of `predicate`.
@@ -4824,7 +4824,7 @@
      * @static
      * @memberOf _
      * @category Array
-     * @param {Array} array The array to search.
+     * @param {Array} data_array The data_array to search.
      * @param {Function|Object|string} [predicate=_.identity] The function invoked
      *  per iteration.
      * @param {*} [thisArg] The `this` binding of `predicate`.
@@ -4857,14 +4857,14 @@
     var findLastIndex = createFindIndex(true);
 
     /**
-     * Gets the first element of `array`.
+     * Gets the first element of `data_array`.
      *
      * @static
      * @memberOf _
      * @alias head
      * @category Array
-     * @param {Array} array The array to query.
-     * @returns {*} Returns the first element of `array`.
+     * @param {Array} array The data_array to query.
+     * @returns {*} Returns the first element of `data_array`.
      * @example
      *
      * _.first([1, 2, 3]);
@@ -4878,16 +4878,16 @@
     }
 
     /**
-     * Flattens a nested array. If `isDeep` is `true` the array is recursively
+     * Flattens a nested data_array. If `isDeep` is `true` the data_array is recursively
      * flattened, otherwise it is only flattened a single level.
      *
      * @static
      * @memberOf _
      * @category Array
-     * @param {Array} array The array to flatten.
+     * @param {Array} array The data_array to flatten.
      * @param {boolean} [isDeep] Specify a deep flatten.
      * @param- {Object} [guard] Enables use as a callback for functions like `_.map`.
-     * @returns {Array} Returns the new flattened array.
+     * @returns {Array} Returns the new flattened data_array.
      * @example
      *
      * _.flatten([1, [2, 3, [4]]]);
@@ -4906,13 +4906,13 @@
     }
 
     /**
-     * Recursively flattens a nested array.
+     * Recursively flattens a nested data_array.
      *
      * @static
      * @memberOf _
      * @category Array
-     * @param {Array} array The array to recursively flatten.
-     * @returns {Array} Returns the new flattened array.
+     * @param {Array} array The data_array to recursively flatten.
+     * @returns {Array} Returns the new flattened data_array.
      * @example
      *
      * _.flattenDeep([1, [2, 3, [4]]]);
@@ -4924,19 +4924,19 @@
     }
 
     /**
-     * Gets the index at which the first occurrence of `value` is found in `array`
+     * Gets the index at which the first occurrence of `value` is found in `data_array`
      * using [`SameValueZero`](http://ecma-international.org/ecma-262/6.0/#sec-samevaluezero)
      * for equality comparisons. If `fromIndex` is negative, it is used as the offset
-     * from the end of `array`. If `array` is sorted providing `true` for `fromIndex`
+     * from the end of `data_array`. If `data_array` is sorted providing `true` for `fromIndex`
      * performs a faster binary search.
      *
      * @static
      * @memberOf _
      * @category Array
-     * @param {Array} array The array to search.
+     * @param {Array} array The data_array to search.
      * @param {*} value The value to search for.
      * @param {boolean|number} [fromIndex=0] The index to search from or `true`
-     *  to perform a binary search on a sorted array.
+     *  to perform a binary search on a sorted data_array.
      * @returns {number} Returns the index of the matched value, else `-1`.
      * @example
      *
@@ -4970,13 +4970,13 @@
     }
 
     /**
-     * Gets all but the last element of `array`.
+     * Gets all but the last element of `data_array`.
      *
      * @static
      * @memberOf _
      * @category Array
-     * @param {Array} array The array to query.
-     * @returns {Array} Returns the slice of `array`.
+     * @param {Array} array The data_array to query.
+     * @returns {Array} Returns the slice of `data_array`.
      * @example
      *
      * _.initial([1, 2, 3]);
@@ -4987,7 +4987,7 @@
     }
 
     /**
-     * Creates an array of unique values that are included in all of the provided
+     * Creates an data_array of unique values that are included in all of the provided
      * arrays using [`SameValueZero`](http://ecma-international.org/ecma-262/6.0/#sec-samevaluezero)
      * for equality comparisons.
      *
@@ -4995,7 +4995,7 @@
      * @memberOf _
      * @category Array
      * @param {...Array} [arrays] The arrays to inspect.
-     * @returns {Array} Returns the new array of shared values.
+     * @returns {Array} Returns the new data_array of shared values.
      * @example
      * _.intersection([1, 2], [4, 2], [2, 1]);
      * // => [2]
@@ -5038,13 +5038,13 @@
     });
 
     /**
-     * Gets the last element of `array`.
+     * Gets the last element of `data_array`.
      *
      * @static
      * @memberOf _
      * @category Array
-     * @param {Array} array The array to query.
-     * @returns {*} Returns the last element of `array`.
+     * @param {Array} array The data_array to query.
+     * @returns {*} Returns the last element of `data_array`.
      * @example
      *
      * _.last([1, 2, 3]);
@@ -5057,15 +5057,15 @@
 
     /**
      * This method is like `_.indexOf` except that it iterates over elements of
-     * `array` from right to left.
+     * `data_array` from right to left.
      *
      * @static
      * @memberOf _
      * @category Array
-     * @param {Array} array The array to search.
+     * @param {Array} array The data_array to search.
      * @param {*} value The value to search for.
-     * @param {boolean|number} [fromIndex=array.length-1] The index to search from
-     *  or `true` to perform a binary search on a sorted array.
+     * @param {boolean|number} [fromIndex=data_array.length-1] The index to search from
+     *  or `true` to perform a binary search on a sorted data_array.
      * @returns {number} Returns the index of the matched value, else `-1`.
      * @example
      *
@@ -5108,24 +5108,24 @@
     }
 
     /**
-     * Removes all provided values from `array` using
+     * Removes all provided values from `data_array` using
      * [`SameValueZero`](http://ecma-international.org/ecma-262/6.0/#sec-samevaluezero)
      * for equality comparisons.
      *
-     * **Note:** Unlike `_.without`, this method mutates `array`.
+     * **Note:** Unlike `_.without`, this method mutates `data_array`.
      *
      * @static
      * @memberOf _
      * @category Array
-     * @param {Array} array The array to modify.
+     * @param {Array} data_array The data_array to modify.
      * @param {...*} [values] The values to remove.
-     * @returns {Array} Returns `array`.
+     * @returns {Array} Returns `data_array`.
      * @example
      *
-     * var array = [1, 2, 3, 1, 2, 3];
+     * var data_array = [1, 2, 3, 1, 2, 3];
      *
-     * _.pull(array, 2, 3);
-     * console.log(array);
+     * _.pull(data_array, 2, 3);
+     * console.log(data_array);
      * // => [1, 1]
      */
     function pull() {
@@ -5151,25 +5151,25 @@
     }
 
     /**
-     * Removes elements from `array` corresponding to the given indexes and returns
-     * an array of the removed elements. Indexes may be specified as an array of
+     * Removes elements from `data_array` corresponding to the given indexes and returns
+     * an data_array of the removed elements. Indexes may be specified as an data_array of
      * indexes or as individual arguments.
      *
-     * **Note:** Unlike `_.at`, this method mutates `array`.
+     * **Note:** Unlike `_.at`, this method mutates `data_array`.
      *
      * @static
      * @memberOf _
      * @category Array
-     * @param {Array} array The array to modify.
+     * @param {Array} data_array The data_array to modify.
      * @param {...(number|number[])} [indexes] The indexes of elements to remove,
      *  specified as individual indexes or arrays of indexes.
-     * @returns {Array} Returns the new array of removed elements.
+     * @returns {Array} Returns the new data_array of removed elements.
      * @example
      *
-     * var array = [5, 10, 15, 20];
-     * var evens = _.pullAt(array, 1, 3);
+     * var data_array = [5, 10, 15, 20];
+     * var evens = _.pullAt(data_array, 1, 3);
      *
-     * console.log(array);
+     * console.log(data_array);
      * // => [5, 15]
      *
      * console.log(evens);
@@ -5184,9 +5184,9 @@
     });
 
     /**
-     * Removes all elements from `array` that `predicate` returns truthy for
-     * and returns an array of the removed elements. The predicate is bound to
-     * `thisArg` and invoked with three arguments: (value, index, array).
+     * Removes all elements from `data_array` that `predicate` returns truthy for
+     * and returns an data_array of the removed elements. The predicate is bound to
+     * `thisArg` and invoked with three arguments: (value, index, data_array).
      *
      * If a property name is provided for `predicate` the created `_.property`
      * style callback returns the property value of the given element.
@@ -5199,24 +5199,24 @@
      * callback returns `true` for elements that have the properties of the given
      * object, else `false`.
      *
-     * **Note:** Unlike `_.filter`, this method mutates `array`.
+     * **Note:** Unlike `_.filter`, this method mutates `data_array`.
      *
      * @static
      * @memberOf _
      * @category Array
-     * @param {Array} array The array to modify.
+     * @param {Array} array The data_array to modify.
      * @param {Function|Object|string} [predicate=_.identity] The function invoked
      *  per iteration.
      * @param {*} [thisArg] The `this` binding of `predicate`.
-     * @returns {Array} Returns the new array of removed elements.
+     * @returns {Array} Returns the new data_array of removed elements.
      * @example
      *
-     * var array = [1, 2, 3, 4];
-     * var evens = _.remove(array, function(n) {
+     * var data_array = [1, 2, 3, 4];
+     * var evens = _.remove(data_array, function(n) {
      *   return n % 2 == 0;
      * });
      *
-     * console.log(array);
+     * console.log(data_array);
      * // => [1, 3]
      *
      * console.log(evens);
@@ -5244,14 +5244,14 @@
     }
 
     /**
-     * Gets all but the first element of `array`.
+     * Gets all but the first element of `data_array`.
      *
      * @static
      * @memberOf _
      * @alias tail
      * @category Array
-     * @param {Array} array The array to query.
-     * @returns {Array} Returns the slice of `array`.
+     * @param {Array} array The data_array to query.
+     * @returns {Array} Returns the slice of `data_array`.
      * @example
      *
      * _.rest([1, 2, 3]);
@@ -5262,7 +5262,7 @@
     }
 
     /**
-     * Creates a slice of `array` from `start` up to, but not including, `end`.
+     * Creates a slice of `data_array` from `start` up to, but not including, `end`.
      *
      * **Note:** This method is used instead of `Array#slice` to support node
      * lists in IE < 9 and to ensure dense arrays are returned.
@@ -5270,10 +5270,10 @@
      * @static
      * @memberOf _
      * @category Array
-     * @param {Array} array The array to slice.
+     * @param {Array} array The data_array to slice.
      * @param {number} [start=0] The start position.
-     * @param {number} [end=array.length] The end position.
-     * @returns {Array} Returns the slice of `array`.
+     * @param {number} [end=data_array.length] The end position.
+     * @returns {Array} Returns the slice of `data_array`.
      */
     function slice(array, start, end) {
       var length = array ? array.length : 0;
@@ -5289,8 +5289,8 @@
 
     /**
      * Uses a binary search to determine the lowest index at which `value` should
-     * be inserted into `array` in order to maintain its sort order. If an iteratee
-     * function is provided it is invoked for `value` and each element of `array`
+     * be inserted into `data_array` in order to maintain its sort order. If an iteratee
+     * function is provided it is invoked for `value` and each element of `data_array`
      * to compute their sort ranking. The iteratee is bound to `thisArg` and
      * invoked with one argument; (value).
      *
@@ -5308,13 +5308,13 @@
      * @static
      * @memberOf _
      * @category Array
-     * @param {Array} array The sorted array to inspect.
+     * @param {Array} data_array The sorted data_array to inspect.
      * @param {*} value The value to evaluate.
      * @param {Function|Object|string} [iteratee=_.identity] The function invoked
      *  per iteration.
      * @param {*} [thisArg] The `this` binding of `iteratee`.
      * @returns {number} Returns the index at which `value` should be inserted
-     *  into `array`.
+     *  into `data_array`.
      * @example
      *
      * _.sortedIndex([30, 50], 40);
@@ -5339,19 +5339,19 @@
 
     /**
      * This method is like `_.sortedIndex` except that it returns the highest
-     * index at which `value` should be inserted into `array` in order to
+     * index at which `value` should be inserted into `data_array` in order to
      * maintain its sort order.
      *
      * @static
      * @memberOf _
      * @category Array
-     * @param {Array} array The sorted array to inspect.
+     * @param {Array} data_array The sorted data_array to inspect.
      * @param {*} value The value to evaluate.
      * @param {Function|Object|string} [iteratee=_.identity] The function invoked
      *  per iteration.
      * @param {*} [thisArg] The `this` binding of `iteratee`.
      * @returns {number} Returns the index at which `value` should be inserted
-     *  into `array`.
+     *  into `data_array`.
      * @example
      *
      * _.sortedLastIndex([4, 4, 5, 5], 5);
@@ -5360,15 +5360,15 @@
     var sortedLastIndex = createSortedIndex(true);
 
     /**
-     * Creates a slice of `array` with `n` elements taken from the beginning.
+     * Creates a slice of `data_array` with `n` elements taken from the beginning.
      *
      * @static
      * @memberOf _
      * @category Array
-     * @param {Array} array The array to query.
+     * @param {Array} array The data_array to query.
      * @param {number} [n=1] The number of elements to take.
      * @param- {Object} [guard] Enables use as a callback for functions like `_.map`.
-     * @returns {Array} Returns the slice of `array`.
+     * @returns {Array} Returns the slice of `data_array`.
      * @example
      *
      * _.take([1, 2, 3]);
@@ -5395,15 +5395,15 @@
     }
 
     /**
-     * Creates a slice of `array` with `n` elements taken from the end.
+     * Creates a slice of `data_array` with `n` elements taken from the end.
      *
      * @static
      * @memberOf _
      * @category Array
-     * @param {Array} array The array to query.
+     * @param {Array} array The data_array to query.
      * @param {number} [n=1] The number of elements to take.
      * @param- {Object} [guard] Enables use as a callback for functions like `_.map`.
-     * @returns {Array} Returns the slice of `array`.
+     * @returns {Array} Returns the slice of `data_array`.
      * @example
      *
      * _.takeRight([1, 2, 3]);
@@ -5431,9 +5431,9 @@
     }
 
     /**
-     * Creates a slice of `array` with elements taken from the end. Elements are
+     * Creates a slice of `data_array` with elements taken from the end. Elements are
      * taken until `predicate` returns falsey. The predicate is bound to `thisArg`
-     * and invoked with three arguments: (value, index, array).
+     * and invoked with three arguments: (value, index, data_array).
      *
      * If a property name is provided for `predicate` the created `_.property`
      * style callback returns the property value of the given element.
@@ -5449,11 +5449,11 @@
      * @static
      * @memberOf _
      * @category Array
-     * @param {Array} array The array to query.
+     * @param {Array} array The data_array to query.
      * @param {Function|Object|string} [predicate=_.identity] The function invoked
      *  per iteration.
      * @param {*} [thisArg] The `this` binding of `predicate`.
-     * @returns {Array} Returns the slice of `array`.
+     * @returns {Array} Returns the slice of `data_array`.
      * @example
      *
      * _.takeRightWhile([1, 2, 3], function(n) {
@@ -5486,9 +5486,9 @@
     }
 
     /**
-     * Creates a slice of `array` with elements taken from the beginning. Elements
+     * Creates a slice of `data_array` with elements taken from the beginning. Elements
      * are taken until `predicate` returns falsey. The predicate is bound to
-     * `thisArg` and invoked with three arguments: (value, index, array).
+     * `thisArg` and invoked with three arguments: (value, index, data_array).
      *
      * If a property name is provided for `predicate` the created `_.property`
      * style callback returns the property value of the given element.
@@ -5504,11 +5504,11 @@
      * @static
      * @memberOf _
      * @category Array
-     * @param {Array} array The array to query.
+     * @param {Array} array The data_array to query.
      * @param {Function|Object|string} [predicate=_.identity] The function invoked
      *  per iteration.
      * @param {*} [thisArg] The `this` binding of `predicate`.
-     * @returns {Array} Returns the slice of `array`.
+     * @returns {Array} Returns the slice of `data_array`.
      * @example
      *
      * _.takeWhile([1, 2, 3], function(n) {
@@ -5541,7 +5541,7 @@
     }
 
     /**
-     * Creates an array of unique values, in order, from all of the provided arrays
+     * Creates an data_array of unique values, in order, from all of the provided arrays
      * using [`SameValueZero`](http://ecma-international.org/ecma-262/6.0/#sec-samevaluezero)
      * for equality comparisons.
      *
@@ -5549,7 +5549,7 @@
      * @memberOf _
      * @category Array
      * @param {...Array} [arrays] The arrays to inspect.
-     * @returns {Array} Returns the new array of combined values.
+     * @returns {Array} Returns the new data_array of combined values.
      * @example
      *
      * _.union([1, 2], [4, 2], [2, 1]);
@@ -5560,14 +5560,14 @@
     });
 
     /**
-     * Creates a duplicate-free version of an array, using
+     * Creates a duplicate-free version of an data_array, using
      * [`SameValueZero`](http://ecma-international.org/ecma-262/6.0/#sec-samevaluezero)
      * for equality comparisons, in which only the first occurence of each element
      * is kept. Providing `true` for `isSorted` performs a faster search algorithm
      * for sorted arrays. If an iteratee function is provided it is invoked for
-     * each element in the array to generate the criterion by which uniqueness
+     * each element in the data_array to generate the criterion by which uniqueness
      * is computed. The `iteratee` is bound to `thisArg` and invoked with three
-     * arguments: (value, index, array).
+     * arguments: (value, index, data_array).
      *
      * If a property name is provided for `iteratee` the created `_.property`
      * style callback returns the property value of the given element.
@@ -5584,11 +5584,11 @@
      * @memberOf _
      * @alias unique
      * @category Array
-     * @param {Array} array The array to inspect.
-     * @param {boolean} [isSorted] Specify the array is sorted.
+     * @param {Array} array The data_array to inspect.
+     * @param {boolean} [isSorted] Specify the data_array is sorted.
      * @param {Function|Object|string} [iteratee] The function invoked per iteration.
      * @param {*} [thisArg] The `this` binding of `iteratee`.
-     * @returns {Array} Returns the new duplicate-value-free array.
+     * @returns {Array} Returns the new duplicate-value-free data_array.
      * @example
      *
      * _.uniq([2, 1, 2]);
@@ -5628,15 +5628,15 @@
     }
 
     /**
-     * This method is like `_.zip` except that it accepts an array of grouped
-     * elements and creates an array regrouping the elements to their pre-zip
+     * This method is like `_.zip` except that it accepts an data_array of grouped
+     * elements and creates an data_array regrouping the elements to their pre-zip
      * configuration.
      *
      * @static
      * @memberOf _
      * @category Array
-     * @param {Array} array The array of grouped elements to process.
-     * @returns {Array} Returns the new array of regrouped elements.
+     * @param {Array} array The data_array of grouped elements to process.
+     * @returns {Array} Returns the new data_array of regrouped elements.
      * @example
      *
      * var zipped = _.zip(['fred', 'barney'], [30, 40], [true, false]);
@@ -5673,10 +5673,10 @@
      * @static
      * @memberOf _
      * @category Array
-     * @param {Array} array The array of grouped elements to process.
+     * @param {Array} array The data_array of grouped elements to process.
      * @param {Function} [iteratee] The function to combine regrouped values.
      * @param {*} [thisArg] The `this` binding of `iteratee`.
-     * @returns {Array} Returns the new array of regrouped elements.
+     * @returns {Array} Returns the new data_array of regrouped elements.
      * @example
      *
      * var zipped = _.zip([1, 2], [10, 20], [100, 200]);
@@ -5701,16 +5701,16 @@
     }
 
     /**
-     * Creates an array excluding all provided values using
+     * Creates an data_array excluding all provided values using
      * [`SameValueZero`](http://ecma-international.org/ecma-262/6.0/#sec-samevaluezero)
      * for equality comparisons.
      *
      * @static
      * @memberOf _
      * @category Array
-     * @param {Array} array The array to filter.
+     * @param {Array} data_array The data_array to filter.
      * @param {...*} [values] The values to exclude.
-     * @returns {Array} Returns the new array of filtered values.
+     * @returns {Array} Returns the new data_array of filtered values.
      * @example
      *
      * _.without([1, 2, 1, 3], 1, 2);
@@ -5723,14 +5723,14 @@
     });
 
     /**
-     * Creates an array of unique values that is the [symmetric difference](https://en.wikipedia.org/wiki/Symmetric_difference)
+     * Creates an data_array of unique values that is the [symmetric difference](https://en.wikipedia.org/wiki/Symmetric_difference)
      * of the provided arrays.
      *
      * @static
      * @memberOf _
      * @category Array
      * @param {...Array} [arrays] The arrays to inspect.
-     * @returns {Array} Returns the new array of values.
+     * @returns {Array} Returns the new data_array of values.
      * @example
      *
      * _.xor([1, 2], [4, 2]);
@@ -5752,7 +5752,7 @@
     }
 
     /**
-     * Creates an array of grouped elements, the first of which contains the first
+     * Creates an data_array of grouped elements, the first of which contains the first
      * elements of the given arrays, the second of which contains the second elements
      * of the given arrays, and so on.
      *
@@ -5760,7 +5760,7 @@
      * @memberOf _
      * @category Array
      * @param {...Array} [arrays] The arrays to process.
-     * @returns {Array} Returns the new array of grouped elements.
+     * @returns {Array} Returns the new data_array of grouped elements.
      * @example
      *
      * _.zip(['fred', 'barney'], [30, 40], [true, false]);
@@ -5770,7 +5770,7 @@
 
     /**
      * The inverse of `_.pairs`; this method returns an object composed from arrays
-     * of property names and values. Provide either a single two dimensional array,
+     * of property names and values. Provide either a single two dimensional data_array,
      * e.g. `[[key1, value1], [key2, value2]]` or two arrays, one of property names
      * and one of corresponding values.
      *
@@ -5819,7 +5819,7 @@
      * @param {...Array} [arrays] The arrays to process.
      * @param {Function} [iteratee] The function to combine grouped values.
      * @param {*} [thisArg] The `this` binding of `iteratee`.
-     * @returns {Array} Returns the new array of grouped elements.
+     * @returns {Array} Returns the new data_array of grouped elements.
      * @example
      *
      * _.zipWith([1, 2], [10, 20], [100, 200], _.add);
@@ -5890,8 +5890,8 @@
      * @example
      *
      * _([1, 2, 3])
-     *  .tap(function(array) {
-     *    array.pop();
+     *  .tap(function(data_array) {
+     *    data_array.pop();
      *  })
      *  .reverse()
      *  .value();
@@ -5965,20 +5965,20 @@
      * @returns {Object} Returns the new `lodash` wrapper instance.
      * @example
      *
-     * var array = [1, 2];
-     * var wrapped = _(array).push(3);
+     * var data_array = [1, 2];
+     * var wrapped = _(data_array).push(3);
      *
-     * console.log(array);
+     * console.log(data_array);
      * // => [1, 2]
      *
      * wrapped = wrapped.commit();
-     * console.log(array);
+     * console.log(data_array);
      * // => [1, 2, 3]
      *
      * wrapped.last();
      * // => 3
      *
-     * console.log(array);
+     * console.log(data_array);
      * // => [1, 2, 3]
      */
     function wrapperCommit() {
@@ -5986,23 +5986,23 @@
     }
 
     /**
-     * Creates a new array joining a wrapped array with any additional arrays
+     * Creates a new data_array joining a wrapped data_array with any additional arrays
      * and/or values.
      *
      * @name concat
      * @memberOf _
      * @category Chain
      * @param {...*} [values] The values to concatenate.
-     * @returns {Array} Returns the new concatenated array.
+     * @returns {Array} Returns the new concatenated data_array.
      * @example
      *
-     * var array = [1];
-     * var wrapped = _(array).concat(2, [3], [[4]]);
+     * var data_array = [1];
+     * var wrapped = _(data_array).concat(2, [3], [[4]]);
      *
      * console.log(wrapped.value());
      * // => [1, 2, 3, [4]]
      *
-     * console.log(array);
+     * console.log(data_array);
      * // => [1]
      */
     var wrapperConcat = restParam(function(values) {
@@ -6021,8 +6021,8 @@
      * @returns {Object} Returns the new `lodash` wrapper instance.
      * @example
      *
-     * var array = [1, 2];
-     * var wrapped = _(array).map(function(value) {
+     * var data_array = [1, 2];
+     * var wrapped = _(data_array).map(function(value) {
      *   return Math.pow(value, 2);
      * });
      *
@@ -6054,10 +6054,10 @@
     }
 
     /**
-     * Reverses the wrapped array so the first element becomes the last, the
+     * Reverses the wrapped data_array so the first element becomes the last, the
      * second element becomes the second to last, and so on.
      *
-     * **Note:** This method mutates the wrapped array.
+     * **Note:** This method mutates the wrapped data_array.
      *
      * @name reverse
      * @memberOf _
@@ -6065,12 +6065,12 @@
      * @returns {Object} Returns the new reversed `lodash` wrapper instance.
      * @example
      *
-     * var array = [1, 2, 3];
+     * var data_array = [1, 2, 3];
      *
-     * _(array).reverse().value()
+     * _(data_array).reverse().value()
      * // => [3, 2, 1]
      *
-     * console.log(array);
+     * console.log(data_array);
      * // => [3, 2, 1]
      */
     function wrapperReverse() {
@@ -6127,7 +6127,7 @@
     /*------------------------------------------------------------------------*/
 
     /**
-     * Creates an array of elements corresponding to the given keys, or indexes,
+     * Creates an data_array of elements corresponding to the given keys, or indexes,
      * of `collection`. Keys may be specified as individual arguments or as arrays
      * of keys.
      *
@@ -6137,7 +6137,7 @@
      * @param {Array|Object|string} collection The collection to iterate over.
      * @param {...(number|number[]|string|string[])} [props] The property names
      *  or indexes of elements to pick, specified individually or in arrays.
-     * @returns {Array} Returns the new array of picked elements.
+     * @returns {Array} Returns the new data_array of picked elements.
      * @example
      *
      * _.at(['a', 'b', 'c'], [0, 2]);
@@ -6255,7 +6255,7 @@
     }
 
     /**
-     * Iterates over elements of `collection`, returning an array of all elements
+     * Iterates over elements of `collection`, returning an data_array of all elements
      * `predicate` returns truthy for. The predicate is bound to `thisArg` and
      * invoked with three arguments: (value, index|key, collection).
      *
@@ -6278,7 +6278,7 @@
      * @param {Function|Object|string} [predicate=_.identity] The function invoked
      *  per iteration.
      * @param {*} [thisArg] The `this` binding of `predicate`.
-     * @returns {Array} Returns the new filtered array.
+     * @returns {Array} Returns the new filtered data_array.
      * @example
      *
      * _.filter([4, 5, 6], function(n) {
@@ -6438,7 +6438,7 @@
      * _([1, 2]).forEach(function(n) {
      *   console.log(n);
      * }).value();
-     * // => logs each value from left to right and returns the array
+     * // => logs each value from left to right and returns the data_array
      *
      * _.forEach({ 'a': 1, 'b': 2 }, function(n, key) {
      *   console.log(n, key);
@@ -6464,14 +6464,14 @@
      * _([1, 2]).forEachRight(function(n) {
      *   console.log(n);
      * }).value();
-     * // => logs each value from right to left and returns the array
+     * // => logs each value from right to left and returns the data_array
      */
     var forEachRight = createForEach(arrayEachRight, baseEachRight);
 
     /**
      * Creates an object composed of keys generated from the results of running
      * each element of `collection` through `iteratee`. The corresponding value
-     * of each key is an array of the elements responsible for generating the key.
+     * of each key is an data_array of the elements responsible for generating the key.
      * The `iteratee` is bound to `thisArg` and invoked with three arguments:
      * (value, index|key, collection).
      *
@@ -6615,7 +6615,7 @@
 
     /**
      * Invokes the method at `path` of each element in `collection`, returning
-     * an array of the results of each invoked method. Any additional arguments
+     * an data_array of the results of each invoked method. Any additional arguments
      * are provided to each invoked method. If `methodName` is a function it is
      * invoked for, and `this` bound to, each element in `collection`.
      *
@@ -6626,7 +6626,7 @@
      * @param {Array|Function|string} path The path of the method to invoke or
      *  the function invoked per iteration.
      * @param {...*} [args] The arguments to invoke the method with.
-     * @returns {Array} Returns the array of results.
+     * @returns {Array} Returns the data_array of results.
      * @example
      *
      * _.invoke([[5, 1, 7], [3, 2, 1]], 'sort');
@@ -6649,7 +6649,7 @@
     });
 
     /**
-     * Creates an array of values by running each element in `collection` through
+     * Creates an data_array of values by running each element in `collection` through
      * `iteratee`. The `iteratee` is bound to `thisArg` and invoked with three
      * arguments: (value, index|key, collection).
      *
@@ -6682,7 +6682,7 @@
      * @param {Function|Object|string} [iteratee=_.identity] The function invoked
      *  per iteration.
      * @param {*} [thisArg] The `this` binding of `iteratee`.
-     * @returns {Array} Returns the new mapped array.
+     * @returns {Array} Returns the new mapped data_array.
      * @example
      *
      * function timesThree(n) {
@@ -6711,7 +6711,7 @@
     }
 
     /**
-     * Creates an array of elements split into two groups, the first of which
+     * Creates an data_array of elements split into two groups, the first of which
      * contains elements `predicate` returns truthy for, while the second of which
      * contains elements `predicate` returns falsey for. The predicate is bound
      * to `thisArg` and invoked with three arguments: (value, index|key, collection).
@@ -6734,7 +6734,7 @@
      * @param {Function|Object|string} [predicate=_.identity] The function invoked
      *  per iteration.
      * @param {*} [thisArg] The `this` binding of `predicate`.
-     * @returns {Array} Returns the array of grouped elements.
+     * @returns {Array} Returns the data_array of grouped elements.
      * @example
      *
      * _.partition([1, 2, 3], function(n) {
@@ -6753,8 +6753,8 @@
      *   { 'user': 'pebbles', 'age': 1,  'active': false }
      * ];
      *
-     * var mapper = function(array) {
-     *   return _.pluck(array, 'user');
+     * var mapper = function(data_array) {
+     *   return _.pluck(data_array, 'user');
      * };
      *
      * // using the `_.matches` callback shorthand
@@ -6854,9 +6854,9 @@
      * @returns {*} Returns the accumulated value.
      * @example
      *
-     * var array = [[0, 1], [2, 3], [4, 5]];
+     * var data_array = [[0, 1], [2, 3], [4, 5]];
      *
-     * _.reduceRight(array, function(flattened, other) {
+     * _.reduceRight(data_array, function(flattened, other) {
      *   return flattened.concat(other);
      * }, []);
      * // => [4, 5, 2, 3, 0, 1]
@@ -6874,7 +6874,7 @@
      * @param {Function|Object|string} [predicate=_.identity] The function invoked
      *  per iteration.
      * @param {*} [thisArg] The `this` binding of `predicate`.
-     * @returns {Array} Returns the new filtered array.
+     * @returns {Array} Returns the new filtered data_array.
      * @example
      *
      * _.reject([1, 2, 3, 4], function(n) {
@@ -6949,14 +6949,14 @@
     }
 
     /**
-     * Creates an array of shuffled values, using a version of the
+     * Creates an data_array of shuffled values, using a version of the
      * [Fisher-Yates shuffle](https://en.wikipedia.org/wiki/Fisher-Yates_shuffle).
      *
      * @static
      * @memberOf _
      * @category Collection
      * @param {Array|Object|string} collection The collection to shuffle.
-     * @returns {Array} Returns the new shuffled array.
+     * @returns {Array} Returns the new shuffled data_array.
      * @example
      *
      * _.shuffle([1, 2, 3, 4]);
@@ -6967,7 +6967,7 @@
     }
 
     /**
-     * Gets the size of `collection` by returning its length for array-like
+     * Gets the size of `collection` by returning its length for data_array-like
      * values or the number of own enumerable properties for objects.
      *
      * @static
@@ -7052,7 +7052,7 @@
     }
 
     /**
-     * Creates an array of elements, sorted in ascending order by the results of
+     * Creates an data_array of elements, sorted in ascending order by the results of
      * running each element in a collection through `iteratee`. This method performs
      * a stable sort, that is, it preserves the original sort order of equal elements.
      * The `iteratee` is bound to `thisArg` and invoked with three arguments:
@@ -7076,7 +7076,7 @@
      * @param {Function|Object|string} [iteratee=_.identity] The function invoked
      *  per iteration.
      * @param {*} [thisArg] The `this` binding of `iteratee`.
-     * @returns {Array} Returns the new sorted array.
+     * @returns {Array} Returns the new sorted data_array.
      * @example
      *
      * _.sortBy([1, 2, 3], function(n) {
@@ -7132,7 +7132,7 @@
      * @param {Array|Object|string} collection The collection to iterate over.
      * @param {...(Function|Function[]|Object|Object[]|string|string[])} iteratees
      *  The iteratees to sort by, specified as individual values or arrays of values.
-     * @returns {Array} Returns the new sorted array.
+     * @returns {Array} Returns the new sorted data_array.
      * @example
      *
      * var users = [
@@ -7181,7 +7181,7 @@
      * @param {Function[]|Object[]|string[]} iteratees The iteratees to sort by.
      * @param {boolean[]} [orders] The sort orders of `iteratees`.
      * @param- {Object} [guard] Enables use as a callback for functions like `_.reduce`.
-     * @returns {Array} Returns the new sorted array.
+     * @returns {Array} Returns the new sorted data_array.
      * @example
      *
      * var users = [
@@ -7213,7 +7213,7 @@
 
     /**
      * Performs a deep comparison between each element in `collection` and the
-     * source object, returning an array of all elements that have equivalent
+     * source object, returning an data_array of all elements that have equivalent
      * property values.
      *
      * **Note:** This method supports comparing arrays, booleans, `Date` objects,
@@ -7226,7 +7226,7 @@
      * @category Collection
      * @param {Array|Object|string} collection The collection to search.
      * @param {Object} source The object of property values to match.
-     * @returns {Array} Returns the new filtered array.
+     * @returns {Array} Returns the new filtered data_array.
      * @example
      *
      * var users = [
@@ -8113,7 +8113,7 @@
 
     /**
      * Creates a function that invokes `func` with the `this` binding of the
-     * created function and arguments from `start` and beyond provided as an array.
+     * created function and arguments from `start` and beyond provided as an data_array.
      *
      * **Note:** This method is based on the [rest parameter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters).
      *
@@ -8164,7 +8164,7 @@
 
     /**
      * Creates a function that invokes `func` with the `this` binding of the created
-     * function and an array of arguments much like [`Function#apply`](https://es5.github.io/#x15.3.4.3).
+     * function and an data_array of arguments much like [`Function#apply`](https://es5.github.io/#x15.3.4.3).
      *
      * **Note:** This method is based on the [spread operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator).
      *
@@ -8552,7 +8552,7 @@
 
     /**
      * Checks if `value` is empty. A value is considered empty unless it is an
-     * `arguments` object, array, string, or jQuery-like collection with a length
+     * `arguments` object, data_array, string, or jQuery-like collection with a length
      * greater than `0` or an object with own enumerable properties.
      *
      * @static
@@ -8622,10 +8622,10 @@
      * // => true
      *
      * // using a customizer callback
-     * var array = ['hello', 'goodbye'];
+     * var data_array = ['hello', 'goodbye'];
      * var other = ['hi', 'goodbye'];
      *
-     * _.isEqual(array, other, function(value, other) {
+     * _.isEqual(data_array, other, function(value, other) {
      *   if (_.every([value, other], RegExp.prototype.test, /^h(?:i|ello)$/)) {
      *     return true;
      *   }
@@ -8709,7 +8709,7 @@
     function isFunction(value) {
       // The use of `Object#toString` avoids issues with the `typeof` operator
       // in older versions of Chrome and Safari which return 'function' for regexes
-      // and Safari 8 equivalents which return 'object' for typed array constructors.
+      // and Safari 8 equivalents which return 'object' for typed data_array constructors.
       return isObject(value) && objToString.call(value) == funcTag;
     }
 
@@ -8979,7 +8979,7 @@
     }
 
     /**
-     * Checks if `value` is classified as a typed array.
+     * Checks if `value` is classified as a typed data_array.
      *
      * @static
      * @memberOf _
@@ -9067,13 +9067,13 @@
     }
 
     /**
-     * Converts `value` to an array.
+     * Converts `value` to an data_array.
      *
      * @static
      * @memberOf _
      * @category Lang
      * @param {*} value The value to convert.
-     * @returns {Array} Returns the converted array.
+     * @returns {Array} Returns the converted data_array.
      * @example
      *
      * (function() {
@@ -9504,7 +9504,7 @@
     var forOwnRight = createForOwn(baseForOwnRight);
 
     /**
-     * Creates an array of function property names from all enumerable properties,
+     * Creates an data_array of function property names from all enumerable properties,
      * own and inherited, of `object`.
      *
      * @static
@@ -9512,7 +9512,7 @@
      * @alias methods
      * @category Object
      * @param {Object} object The object to inspect.
-     * @returns {Array} Returns the new array of property names.
+     * @returns {Array} Returns the new data_array of property names.
      * @example
      *
      * _.functions(_);
@@ -9642,7 +9642,7 @@
     }
 
     /**
-     * Creates an array of the own enumerable property names of `object`.
+     * Creates an data_array of the own enumerable property names of `object`.
      *
      * **Note:** Non-object values are coerced to objects. See the
      * [ES spec](http://ecma-international.org/ecma-262/6.0/#sec-object.keys)
@@ -9652,7 +9652,7 @@
      * @memberOf _
      * @category Object
      * @param {Object} object The object to query.
-     * @returns {Array} Returns the array of property names.
+     * @returns {Array} Returns the data_array of property names.
      * @example
      *
      * function Foo() {
@@ -9678,7 +9678,7 @@
     };
 
     /**
-     * Creates an array of the own and inherited enumerable property names of `object`.
+     * Creates an data_array of the own and inherited enumerable property names of `object`.
      *
      * **Note:** Non-object values are coerced to objects.
      *
@@ -9686,7 +9686,7 @@
      * @memberOf _
      * @category Object
      * @param {Object} object The object to query.
-     * @returns {Array} Returns the array of property names.
+     * @returns {Array} Returns the data_array of property names.
      * @example
      *
      * function Foo() {
@@ -9831,14 +9831,14 @@
     });
 
     /**
-     * Creates a two dimensional array of the key-value pairs for `object`,
+     * Creates a two dimensional data_array of the key-value pairs for `object`,
      * e.g. `[[key1, value1], [key2, value2]]`.
      *
      * @static
      * @memberOf _
      * @category Object
      * @param {Object} object The object to query.
-     * @returns {Array} Returns the new array of key-value pairs.
+     * @returns {Array} Returns the new data_array of key-value pairs.
      * @example
      *
      * _.pairs({ 'barney': 36, 'fred': 40 });
@@ -10036,7 +10036,7 @@
     }
 
     /**
-     * Creates an array of the own enumerable property values of `object`.
+     * Creates an data_array of the own enumerable property values of `object`.
      *
      * **Note:** Non-object values are coerced to objects.
      *
@@ -10044,7 +10044,7 @@
      * @memberOf _
      * @category Object
      * @param {Object} object The object to query.
-     * @returns {Array} Returns the array of property values.
+     * @returns {Array} Returns the data_array of property values.
      * @example
      *
      * function Foo() {
@@ -10065,7 +10065,7 @@
     }
 
     /**
-     * Creates an array of the own and inherited enumerable property values
+     * Creates an data_array of the own and inherited enumerable property values
      * of `object`.
      *
      * **Note:** Non-object values are coerced to objects.
@@ -10074,7 +10074,7 @@
      * @memberOf _
      * @category Object
      * @param {Object} object The object to query.
-     * @returns {Array} Returns the array of property values.
+     * @returns {Array} Returns the data_array of property values.
      * @example
      *
      * function Foo() {
@@ -11030,7 +11030,7 @@
     }
 
     /**
-     * Splits `string` into an array of its words.
+     * Splits `string` into an data_array of its words.
      *
      * @static
      * @memberOf _
@@ -11272,8 +11272,8 @@
      * @returns {Function} Returns the new function.
      * @example
      *
-     * var array = _.times(3, _.constant),
-     *     object = { 'a': array, 'b': array, 'c': array };
+     * var data_array = _.times(3, _.constant),
+     *     object = { 'a': data_array, 'b': data_array, 'c': data_array };
      *
      * _.map(['a[2]', 'c[0]'], _.methodOf(object));
      * // => [2, 0]
@@ -11446,8 +11446,8 @@
      * @returns {Function} Returns the new function.
      * @example
      *
-     * var array = [0, 1, 2],
-     *     object = { 'a': array, 'b': array, 'c': array };
+     * var data_array = [0, 1, 2],
+     *     object = { 'a': data_array, 'b': data_array, 'c': data_array };
      *
      * _.map(['a[2]', 'c[0]'], _.propertyOf(object));
      * // => [2, 0]
@@ -11462,7 +11462,7 @@
     }
 
     /**
-     * Creates an array of numbers (positive and/or negative) progressing from
+     * Creates an data_array of numbers (positive and/or negative) progressing from
      * `start` up to, but not including, `end`. If `end` is not specified it is
      * set to `start` with `start` then set to `0`. If `end` is less than `start`
      * a zero-length range is created unless a negative `step` is specified.
@@ -11473,7 +11473,7 @@
      * @param {number} [start=0] The start of the range.
      * @param {number} end The end of the range.
      * @param {number} [step=1] The value to increment or decrement by.
-     * @returns {Array} Returns the new array of numbers.
+     * @returns {Array} Returns the new data_array of numbers.
      * @example
      *
      * _.range(4);
@@ -11521,7 +11521,7 @@
     }
 
     /**
-     * Invokes the iteratee function `n` times, returning an array of the results
+     * Invokes the iteratee function `n` times, returning an data_array of the results
      * of each invocation. The `iteratee` is bound to `thisArg` and invoked with
      * one argument; (index).
      *
@@ -11531,7 +11531,7 @@
      * @param {number} n The number of times to invoke `iteratee`.
      * @param {Function} [iteratee=_.identity] The function invoked per iteration.
      * @param {*} [thisArg] The `this` binding of `iteratee`.
-     * @returns {Array} Returns the array of results.
+     * @returns {Array} Returns the data_array of results.
      * @example
      *
      * var diceRolls = _.times(3, _.partial(_.random, 1, 6, false));

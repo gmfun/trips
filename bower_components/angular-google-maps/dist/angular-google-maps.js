@@ -293,7 +293,7 @@ Nicholas McCready - https://twitter.com/nmccready
     /*
         Author Nick McCready
         Intersection of Objects if the arrays have something in common each intersecting object will be returned
-        in an new array.
+        in an new data_array.
      */
     this.intersectionObjects = function(array1, array2, comparison) {
       var res;
@@ -582,7 +582,7 @@ Nicholas McCready - https://twitter.com/nmccready
       /*
         Author: Nicholas McCready & jfriend00
         _async handles things asynchronous-like :), to allow the UI to be free'd to do other things
-        Code taken from http://stackoverflow.com/questions/10344498/best-way-to-iterate-over-an-array-without-blocking-the-ui
+        Code taken from http://stackoverflow.com/questions/10344498/best-way-to-iterate-over-an-data_array-without-blocking-the-ui
       
         The design of any functionality of _async is to be like lodash/underscore and replicate it but call things
         asynchronously underneath. Each should be sufficient for most things to be derived from.
@@ -9370,8 +9370,8 @@ InfoBox.prototype.close = function () {
 
 /**
  * @name ClusterIconStyle
- * @class This class represents the object for values in the <code>styles</code> array passed
- *  to the {@link MarkerClusterer} constructor. The element in this array that is used to
+ * @class This class represents the object for values in the <code>styles</code> data_array passed
+ *  to the {@link MarkerClusterer} constructor. The element in this data_array that is used to
  *  style the cluster icon is determined by calling the <code>calculator</code> function.
  *
  * @property {string} url The URL of the cluster icon image file. Required.
@@ -9411,7 +9411,7 @@ InfoBox.prototype.close = function () {
  *
  * @property {string} text The text of the label to be shown on the cluster icon.
  * @property {number} index The index plus 1 of the element in the <code>styles</code>
- *  array to be used to style the cluster icon.
+ *  data_array to be used to style the cluster icon.
  * @property {string} title The tooltip to display when the mouse moves over the cluster icon.
  *  If this value is <code>undefined</code> or <code>""</code>, <code>title</code> is set to the
  *  value of the <code>title</code> property passed to the MarkerClusterer.
@@ -9422,7 +9422,7 @@ InfoBox.prototype.close = function () {
  * @constructor
  * @extends google.maps.OverlayView
  * @param {Cluster} cluster The cluster with which the icon is to be associated.
- * @param {Array} [styles] An array of {@link ClusterIconStyle} defining the cluster icons
+ * @param {Array} [styles] An data_array of {@link ClusterIconStyle} defining the cluster icons
  *  to use for various cluster sizes.
  * @private
  */
@@ -9612,7 +9612,7 @@ ClusterIcon.prototype.show = function () {
 
 
 /**
- * Sets the icon styles to the appropriate element in the styles array.
+ * Sets the icon styles to the appropriate element in the styles data_array.
  *
  * @param {ClusterIconInfo} sums The icon label text and styles index.
  */
@@ -9710,11 +9710,11 @@ Cluster.prototype.getSize = function () {
 
 
 /**
- * Returns the array of markers managed by the cluster. You can call this from
+ * Returns the data_array of markers managed by the cluster. You can call this from
  * a <code>click</code>, <code>mouseover</code>, or <code>mouseout</code> event handler
  * for the <code>MarkerClusterer</code> object.
  *
- * @return {Array} The array of markers in the cluster.
+ * @return {Array} The data_array of markers in the cluster.
  */
 Cluster.prototype.getMarkers = function () {
   return this.markers_;
@@ -9936,27 +9936,27 @@ Cluster.prototype.isMarkerAlreadyAdded_ = function (marker) {
  *  different tooltip for each cluster marker.)
  * @property {function} [calculator=MarkerClusterer.CALCULATOR] The function used to determine
  *  the text to be displayed on a cluster marker and the index indicating which style to use
- *  for the cluster marker. The input parameters for the function are (1) the array of markers
+ *  for the cluster marker. The input parameters for the function are (1) the data_array of markers
  *  represented by a cluster marker and (2) the number of cluster icon styles. It returns a
  *  {@link ClusterIconInfo} object. The default <code>calculator</code> returns a
  *  <code>text</code> property which is the number of markers in the cluster and an
  *  <code>index</code> property which is one higher than the lowest integer such that
  *  <code>10^i</code> exceeds the number of markers in the cluster, or the size of the styles
- *  array, whichever is less. The <code>styles</code> array element used has an index of
+ *  data_array, whichever is less. The <code>styles</code> data_array element used has an index of
  *  <code>index</code> minus 1. For example, the default <code>calculator</code> returns a
  *  <code>text</code> value of <code>"125"</code> and an <code>index</code> of <code>3</code>
  *  for a cluster icon representing 125 markers so the element used in the <code>styles</code>
- *  array is <code>2</code>. A <code>calculator</code> may also return a <code>title</code>
+ *  data_array is <code>2</code>. A <code>calculator</code> may also return a <code>title</code>
  *  property that contains the text of the tooltip to be used for the cluster marker. If
  *   <code>title</code> is not defined, the tooltip is set to the value of the <code>title</code>
  *   property for the MarkerClusterer.
  * @property {string} [clusterClass="cluster"] The name of the CSS class defining general styles
  *  for the cluster markers. Use this class to define CSS styles that are not set up by the code
- *  that processes the <code>styles</code> array.
- * @property {Array} [styles] An array of {@link ClusterIconStyle} elements defining the styles
+ *  that processes the <code>styles</code> data_array.
+ * @property {Array} [styles] An data_array of {@link ClusterIconStyle} elements defining the styles
  *  of the cluster markers to be used. The element to be used to style a given cluster marker
  *  is determined by the function defined by the <code>calculator</code> property.
- *  The default is an array of {@link ClusterIconStyle} elements whose properties are derived
+ *  The default is an data_array of {@link ClusterIconStyle} elements whose properties are derived
  *  from the values for <code>imagePath</code>, <code>imageExtension</code>, and
  *  <code>imageSizes</code>.
  * @property {boolean} [enableRetinaIcons=false] Whether to allow the use of cluster icons that
@@ -9980,7 +9980,7 @@ Cluster.prototype.isMarkerAlreadyAdded_ = function (marker) {
  *  The extension name for the cluster icon image files (e.g., <code>"png"</code> or
  *  <code>"jpg"</code>).
  * @property {Array} [imageSizes=MarkerClusterer.IMAGE_SIZES]
- *  An array of numbers containing the widths of the group of
+ *  An data_array of numbers containing the widths of the group of
  *  <code>imagePath</code>n.<code>imageExtension</code> image files.
  *  (The images are assumed to be square.)
  */
@@ -10219,7 +10219,7 @@ MarkerClusterer.prototype.setMaxZoom = function (maxZoom) {
 /**
  *  Returns the value of the <code>styles</code> property.
  *
- *  @return {Array} The array of styles defining the cluster markers to be used.
+ *  @return {Array} The data_array of styles defining the cluster markers to be used.
  */
 MarkerClusterer.prototype.getStyles = function () {
   return this.styles_;
@@ -10229,7 +10229,7 @@ MarkerClusterer.prototype.getStyles = function () {
 /**
  *  Sets the value of the <code>styles</code> property.
  *
- *  @param {Array.<ClusterIconStyle>} styles The array of styles to use.
+ *  @param {Array.<ClusterIconStyle>} styles The data_array of styles to use.
  */
 MarkerClusterer.prototype.setStyles = function (styles) {
   this.styles_ = styles;
@@ -10458,9 +10458,9 @@ MarkerClusterer.prototype.setClusterClass = function (clusterClass) {
 
 
 /**
- *  Returns the array of markers managed by the clusterer.
+ *  Returns the data_array of markers managed by the clusterer.
  *
- *  @return {Array} The array of markers managed by the clusterer.
+ *  @return {Array} The data_array of markers managed by the clusterer.
  */
 MarkerClusterer.prototype.getMarkers = function () {
   return this.markers_;
@@ -10478,9 +10478,9 @@ MarkerClusterer.prototype.getTotalMarkers = function () {
 
 
 /**
- * Returns the current array of clusters formed by the clusterer.
+ * Returns the current data_array of clusters formed by the clusterer.
  *
- * @return {Array} The array of clusters formed by the clusterer.
+ * @return {Array} The data_array of clusters formed by the clusterer.
  */
 MarkerClusterer.prototype.getClusters = function () {
   return this.clusters_;
@@ -10513,7 +10513,7 @@ MarkerClusterer.prototype.addMarker = function (marker, opt_nodraw) {
 
 
 /**
- * Adds an array of markers to the clusterer. The clusters are redrawn unless
+ * Adds an data_array of markers to the clusterer. The clusters are redrawn unless
  *  <code>opt_nodraw</code> is set to <code>true</code>.
  *
  * @param {Array.<google.maps.Marker>} markers The markers to add.
@@ -10574,7 +10574,7 @@ MarkerClusterer.prototype.removeMarker = function (marker, opt_nodraw) {
 
 
 /**
- * Removes an array of markers from the cluster. The clusters are redrawn unless
+ * Removes an data_array of markers from the cluster. The clusters are redrawn unless
  *  <code>opt_nodraw</code> is set to <code>true</code>. Returns <code>true</code> if markers
  *  were removed from the clusterer.
  *
@@ -10893,7 +10893,7 @@ MarkerClusterer.prototype.extend = function (obj1, obj2) {
  * The default function for determining the label text and style
  * for a cluster icon.
  *
- * @param {Array.<google.maps.Marker>} markers The array of markers represented by the cluster.
+ * @param {Array.<google.maps.Marker>} markers The data_array of markers represented by the cluster.
  * @param {number} numStyles The number of marker styles available.
  * @return {ClusterIconInfo} The information resource for the cluster.
  * @constant
@@ -10956,7 +10956,7 @@ MarkerClusterer.IMAGE_EXTENSION = "png";
 
 
 /**
- * The default array of sizes for the marker cluster images.
+ * The default data_array of sizes for the marker cluster images.
  *
  * @type {Array.<number>}
  * @constant
@@ -12475,9 +12475,9 @@ window['RichMarkerPosition'] = RichMarkerPosition;
 	graph.getEdge('A', 'B').weight = 2 // weight is the only built-in handy property
 	                                   // of an edge object. Feel free to attach
 	                                   // other properties
-	graph.getInEdgesOf('B'); // => array of edge objects, in this case only one;
+	graph.getInEdgesOf('B'); // => data_array of edge objects, in this case only one;
 	                         // connecting A to B
-	graph.getOutEdgesOf('A'); // => array of edge objects, one to B and one to C
+	graph.getOutEdgesOf('A'); // => data_array of edge objects, one to B and one to C
 	graph.getAllEdgesOf('A'); // => all the in and out edges. Edge directed toward
 	                          // the node itself are only counted once
 	forEachNode(function(nodeObject) {
@@ -12638,8 +12638,8 @@ window['RichMarkerPosition'] = RichMarkerPosition;
 
 	    Graph.prototype.getInEdgesOf = function(nodeId) {
 	      /*
-	      _Returns:_ an array of edge objects that are directed toward the node, or
-	      empty array if no such edge or node exists.
+	      _Returns:_ an data_array of edge objects that are directed toward the node, or
+	      empty data_array if no such edge or node exists.
 	      */
 
 	      var fromId, inEdges, toNode, _ref;
@@ -12655,7 +12655,7 @@ window['RichMarkerPosition'] = RichMarkerPosition;
 
 	    Graph.prototype.getOutEdgesOf = function(nodeId) {
 	      /*
-	      _Returns:_ an array of edge objects that go out of the node, or empty array
+	      _Returns:_ an data_array of edge objects that go out of the node, or empty data_array
 	      if no such edge or node exists.
 	      */
 
@@ -12676,9 +12676,9 @@ window['RichMarkerPosition'] = RichMarkerPosition;
 	      `getOutEdgesOf()`. Some nodes might have an edge pointing toward itself.
 	      This method solves that duplication.
 	      
-	      _Returns:_ an array of edge objects linked to the node, no matter if they're
+	      _Returns:_ an data_array of edge objects linked to the node, no matter if they're
 	      outgoing or coming. Duplicate edge created by self-pointing nodes are
-	      removed. Only one copy stays. Empty array if node has no edge.
+	      removed. Only one copy stays. Empty data_array if node has no edge.
 	      */
 
 	      var i, inEdges, outEdges, selfEdge, _i, _ref, _ref1;
@@ -12781,7 +12781,7 @@ window['RichMarkerPosition'] = RichMarkerPosition;
 	        dataToHeapify = [];
 	      }
 	      /*
-	      Pass an optional array to be heapified. Takes only O(n) time.
+	      Pass an optional data_array to be heapified. Takes only O(n) time.
 	      */
 
 	      this._data = [void 0];
@@ -12936,7 +12936,7 @@ window['RichMarkerPosition'] = RichMarkerPosition;
 	        valuesToAdd = [];
 	      }
 	      /*
-	      Can pass an array of elements to link together during `new LinkedList()`
+	      Can pass an data_array of elements to link together during `new LinkedList()`
 	      initiation.
 	      */
 
@@ -13117,7 +13117,7 @@ window['RichMarkerPosition'] = RichMarkerPosition;
 	        startingPosition = 0;
 	      }
 	      /*
-	      Find the index of an item, similarly to `array.indexOf()`. Defaults to start
+	      Find the index of an item, similarly to `data_array.indexOf()`. Defaults to start
 	      searching from the beginning, by can start at another position by passing
 	      `startingPosition`. This parameter can also be negative; but unlike the
 	      other methods of this class, `startingPosition` (optional) can be as small
@@ -13396,7 +13396,7 @@ window['RichMarkerPosition'] = RichMarkerPosition;
 	        initialArray = [];
 	      }
 	      /*
-	      Pass an optional array to be transformed into a queue. The item at index 0
+	      Pass an optional data_array to be transformed into a queue. The item at index 0
 	      is the first to be dequeued.
 	      */
 
@@ -13506,7 +13506,7 @@ window['RichMarkerPosition'] = RichMarkerPosition;
 	        valuesToAdd = [];
 	      }
 	      /*
-	      Pass an optional array to be turned into binary tree. **Note:** does not
+	      Pass an optional data_array to be turned into binary tree. **Note:** does not
 	      accept duplicate, undefined and null.
 	      */
 
@@ -13958,7 +13958,7 @@ window['RichMarkerPosition'] = RichMarkerPosition;
 	        words = [];
 	      }
 	      /*
-	      Pass an optional array of strings to be inserted initially.
+	      Pass an optional data_array of strings to be inserted initially.
 	      */
 
 	      this._root = {};
@@ -14069,7 +14069,7 @@ window['RichMarkerPosition'] = RichMarkerPosition;
 	      trie.wordsWithPrefix('hel'); // ['hell', 'hello']
 	      ```
 	      
-	      _Returns:_ an array of strings, or empty array if no word found.
+	      _Returns:_ an data_array of strings, or empty data_array if no word found.
 	      */
 
 	      var accumulatedLetters, currentNode, letter, node, queue, subNode, words, _i, _len, _ref;
