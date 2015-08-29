@@ -4,10 +4,11 @@ BASE_URL = "https://hypertrack-api-staging.herokuapp.com/api/v1/";
 var map;
 var data_array;
 var marker;
-var fps = 200;
+var fps = 100;
 var position;
 var next;
 var poly;
+var trip_id
 function initMap(){
 
     var origin = {lat: 19.10959857536918, lng: 72.90787946535647};
@@ -24,37 +25,42 @@ function initMap(){
         title: 'Hello World!'
     });
     var url = "/gps/filtered/?trip_id=257";
+    $("#start").click(click);
+    function click() {
+        trip_id = $("#trip_id").val();
+        console.log(trip_id);
+        $.ajax({
+            type: "GET",
+            url: BASE_URL + "gps/filtered/?trip_id=" + trip_id,
+            contentType:"application/json; charset=utf-8",
+            dataType: "json",
+            success: function(data) {
+                console.log(data);
+                //var now = new Date().toISOString();
+                //data.results.forEach(function(v, i){
+                //    v.created_at =  now;
+                //});
+                //data_array = Object.create(data.results);
+                next = data.next;
+                data_array = data.results;
+                map.setCenter({lat: data_array[0].location.coordinates[1], lng: data_array[0].location.coordinates[0]});
+                var polyarray = [];
+                data.results.forEach(function(v, i) {
+                    polyarray.push({lat: v.location.coordinates[1], lng: v.location.coordinates[0]})
 
-    $.ajax({
-        type: "GET",
-        url: BASE_URL + "gps/filtered/?trip_id=256",
-        contentType:"application/json; charset=utf-8",
-        dataType: "json",
-        success: function(data) {
-            console.log(data);
-            //var now = new Date().toISOString();
-            //data.results.forEach(function(v, i){
-            //    v.created_at =  now;
-            //});
-            //data_array = Object.create(data.results);
-            next = data.next;
-            data_array = data.results;
-            var polyarray = []
-            data.results.forEach(function(v, i) {
-                polyarray.push({lat: v.location.coordinates[1], lng: v.location.coordinates[0]})
-
-            });
-            poly = new google.maps.Polyline({
-                path: polyarray,
-                strokeColor: '#FF0000',
-                strokeOpacity: 1.0,
-                strokeWeight: 2
-            });
-            poly.setMap(map);
-            startAnmination();
-            //fillArray(data_array[data_array.length-1].created_at)
-        }
-    });
+                });
+                poly = new google.maps.Polyline({
+                    path: polyarray,
+                    strokeColor: '#FF0000',
+                    strokeOpacity: 0.5,
+                    strokeWeight: 2
+                });
+                poly.setMap(map);
+                startAnmination();
+                fillArray(data_array[data_array.length-1].created_at)
+            }
+        });
+    }
     function startAnmination(){
         var start_time = new Date(),
             current_index = 0,
@@ -89,7 +95,7 @@ function initMap(){
         function repeat(){
             //console.log(current_index, data_array.length, "repeat");
             if(current_index+1 < data_array.length ) {
-                console.log(position, current_index);
+                //console.log(position, current_index);
                 if(checkDistance()){
                     var heading = google.maps.geometry.spherical.computeHeading(this_latLng(), next_latLng());
                     position = google.maps.geometry.spherical.computeOffset(position, to_move, heading);
@@ -153,7 +159,7 @@ function initMap(){
     }
 
     function fillArray(time){
-        this.fill = setInterval(function () {
+        this.fill = setTimeout(function () {
             $.ajax({
                 type: "GET",
                 url: next,
@@ -174,10 +180,12 @@ function initMap(){
 
                     if(data.next) {
                         next = data.next;
+                        fillArray()
                     }else {
-                        clearTimeout(this.fill);
+                        console.log("clear");
+                        //clearInterval(this.fill);
                     }
-                    fillArray(data_array[data_array.length-1])
+                    //fillArray(data_array[data_array.length-1])
                 }
             });
         },10000)
