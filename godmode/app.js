@@ -24,14 +24,14 @@ function initMap(){
         map: map,
         title: 'Hello World!'
     });
-    var url = "/gps/filtered/?trip_id=257";
+    var url = "gps/filtered/?trip_id=287&start=1";
     $("#start").click(click);
     function click() {
         trip_id = $("#trip_id").val();
         console.log(trip_id);
         $.ajax({
             type: "GET",
-            url: BASE_URL + "gps/filtered/?trip_id=" + trip_id,
+            url: BASE_URL + "gps/filtered/?trip_id=" + trip_id + "&start=1",
             contentType:"application/json; charset=utf-8",
             dataType: "json",
             success: function(data) {
@@ -52,7 +52,7 @@ function initMap(){
                 poly = new google.maps.Polyline({
                     path: polyarray,
                     strokeColor: '#FF0000',
-                    strokeOpacity: 0.5,
+                    strokeOpacity: 0.2,
                     strokeWeight: 2
                 });
                 poly.setMap(map);
@@ -95,7 +95,7 @@ function initMap(){
         function repeat(){
             //console.log(current_index, data_array.length, "repeat");
             if(current_index+1 < data_array.length ) {
-                //console.log(position, current_index);
+                console.log(position, current_index, to_move, data_array.length);
                 if(checkDistance()){
                     var heading = google.maps.geometry.spherical.computeHeading(this_latLng(), next_latLng());
                     position = google.maps.geometry.spherical.computeOffset(position, to_move, heading);
@@ -129,9 +129,10 @@ function initMap(){
 
             }
             else {
-                if(next){
-                    draw()
-                }
+                draw()
+                //if(next){
+                //    draw()
+                //}
             }
 
         }
@@ -144,7 +145,7 @@ function initMap(){
             var distance = google.maps.geometry.spherical.computeDistanceBetween(this_latLng(), next_latLng());
             var speed = distance / time;
             to_move = speed * fps
-            //console.log(to_move, distance, time, speed, "tomove");
+            console.log(to_move, distance, time, speed, "tomove");
             //console.log("things", current_index, to_move);
         }
         function checkDistance() {
@@ -159,35 +160,26 @@ function initMap(){
     }
 
     function fillArray(time){
+        console.log("get");
         this.fill = setTimeout(function () {
             $.ajax({
                 type: "GET",
-                url: next,
+                url: BASE_URL + "gps/filtered/?trip_id=" + trip_id + "&min_time=" + time,
                 contentType:"application/json; charset=utf-8",
                 dataType: "json",
                 success: function(data) {
-                    if(data.next != next){
-                        data_array.concat(data.results);
-                        var polyarray;
-                        data.results.forEach(function(v, i) {
-                            poly.getPath().push(new google.maps.LatLng(v.location.coordinates[1], v.location.coordinates[0]))
-                            //polyarray.push(new google.maps.LatLng(v.location.coordinates[1], v.location.coordinates[0]))
-                        })
-
-                    }
+                    //data_array.concat(data.results);
+                    data.results.forEach(function(v, i) {
+                        poly.getPath().push(new google.maps.LatLng(v.location.coordinates[1], v.location.coordinates[0]))
+                        data_array.push(v)
+                    });
+                    console.log(data_array.length, "get");
+                    fillArray(data_array[data_array.length -1].created_at);
 
 
-
-                    if(data.next) {
-                        next = data.next;
-                        fillArray()
-                    }else {
-                        console.log("clear");
-                        //clearInterval(this.fill);
-                    }
                     //fillArray(data_array[data_array.length-1])
                 }
             });
-        },10000)
+        },5000)
     }
 }
