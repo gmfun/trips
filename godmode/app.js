@@ -12,7 +12,7 @@ var trip_id
 function initMap(){
 
     var origin = {lat: 19.10959857536918, lng: 72.90787946535647};
-    var origin = {lat: 19.196858232658, lng: 72.8672843335952};
+    //var origin = {lat: 19.196858232658, lng: 72.8672843335952};
 
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 14,
@@ -143,8 +143,11 @@ function initMap(){
             var current_latlng = new google.maps.LatLng(current_position.location.coordinates[1], current_position.location.coordinates[0]);
             //var next_latlng = new google.maps.LatLng(data_array[current_index+1].location.coordinates[1], data_array[current_index+1].location.coordinates[1]);
             var distance = google.maps.geometry.spherical.computeDistanceBetween(this_latLng(), next_latLng());
+            if(current_index == data_array.length+1){
+                distance = 0
+            }
             var speed = distance / time;
-            to_move = speed * fps
+            to_move = speed * fps;
             console.log(to_move, distance, time, speed, "tomove");
             //console.log("things", current_index, to_move);
         }

@@ -19,7 +19,7 @@ function initMap() {
     var directionsDisplay = new google.maps.DirectionsRenderer;
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 15,
-        center: {lat: 19.1968401, lng: 72.8710581}
+        center: {lat: 19.10959857536918, lng: 72.90787946535647}
     });
     // destination;
     google.maps.event.addListener(map, 'click', function(event) {
